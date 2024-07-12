@@ -14,6 +14,27 @@ Previously, I conducted a research internship on 3D Computer Vision, specificall
 Publications
 ======
 
+![Paper Image](../images/paper_1.png){: .align-left width="300px"}
+<br><br>
+**COT3DREF: Chain-of-Thoughts Data-Efficient 3D Visual Grounding**  
+<span style="font-size:small;">Eslam Mohamed Bakr, **Mohamed Ayman**, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny</span>
+<br>
+<span style="font-size:small;">Presented at the International Conference on Learning Representations (ICLR), 2024</span>
+<br>
+<span style="font-size:small;">[PDF](https://arxiv.org/pdf/2310.06214) | [Code](https://github.com/eslambakr/CoT3D_VG)</span>
+
+
+<br><br>
+![Paper Image](../images/paper_2.png){: .align-left width="300px"}
+<br>
+**3DCoMPaT++: An improved large-scale 3D vision dataset for compositional recognition**  
+<span style="font-size:small;style=text-align: right">Habib Slim, Xiang Li, Yuchen Li, Mahmoud Ahmed, **Mohamed Ayman**, Ujjwal Upadhyay,
+Ahmed Abdelreheem, Arpit Prajapati, Suhail Pothigara, Peter Wonka</span>
+<br>
+<span style="font-size:small;style=text-align: right">Submitted at Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2024</span>
+<br>
+<span style="font-size:small;style=text-align: right">[PDF](https://arxiv.org/pdf/2310.18511) | [Code](https://arxiv.org/pdf/2310.18511)</span>
+
 
 Selected Projects
 ======
