@@ -36,5 +36,3 @@ Ahmed Abdelreheem, Arpit Prajapati, Suhail Pothigara, Peter Wonka</span>
 <span style="font-size:small;style=text-align: right">[PDF](https://arxiv.org/pdf/2310.18511) | [Code](https://arxiv.org/pdf/2310.18511)</span>
 
 
-Selected Projects
-======
