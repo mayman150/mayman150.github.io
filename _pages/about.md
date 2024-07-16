@@ -11,6 +11,9 @@ I am currently pursuing a Master’s degree at the University of Alberta under t
 
 Previously, I conducted a research internship on 3D Computer Vision, specifically composition learning, at King Abdullah University of Science and Technology (KAUST) under the supervision of Prof.[Mohamed Elhoseiny](https://cemse.kaust.edu.sa/people/person/mohamed-elhoseiny). Also, I worked at data distillation of NLP datasets as an intern at Microsoft Research. During my undergraduate program, I focused on optimizing Approximate Nearest Neighbor Search for billion-scale NLP datasets and supporting filter-search.
 
+**Current Interests**: Machine Learning, Reinforcement Learning, Continual Learning, Computer Vision, Search Optimization, and Games.  
+<br>
+
 Publications
 ======
 
