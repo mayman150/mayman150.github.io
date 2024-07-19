@@ -42,10 +42,10 @@ Our findings suggest that agents can learn to cooperate based on intrinsic motiv
 
 **Accelerating Disk-Based Approximate Nearest Neighbor Search via Inverted Indexing.**<br>
 *Machine Learning, Search Optimization, NLP*
-* **Background** : 
-* **Research Question** : 
-* **Contribution** : 
-* **Results** : 
+* **Background** : The field of approximate nearest neighbor searches (ANNs) has seen significant progress, particularly in developing disk-resident indices to manage massive datasets. Microsoft's SPANN algorithm stands out for its hybrid use of memory and disk storage, enabling efficient retrieval of nearest neighbors for given queries. However, recent advancements have primarily focused on improving index-building techniques, with little attention paid to optimizing large-scale query batches or supporting filtered searches with labeled and unstructured data. <br>
+* **Research Question** : How can the performance of disk-based approximate nearest neighbor searches be enhanced for large-scale query batches and filtered searches, while maintaining high recall and graph quality? <br>
+* **Contribution** : In this project, we have two key enhancements to the SPANN model. First, an inverted-index-based, out-of-order query execution engine is proposed, which significantly accelerates current disk-based ANNs. Second, the SPANN model is extended to support the addition of filters in the search process, improving the handling of labeled and unstructured data. <br>
+* **Results** : Experiments demonstrate that the proposed query execution engine can outperform the state-of-the-art SPANN model by up to 6x while maintaining the same level of recall. Qualitative analysis confirms that the graph quality is preserved even with the support for filters, ensuring the integrity of the search results.
 <br><br>
 
 
