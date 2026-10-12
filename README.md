@@ -4,6 +4,8 @@ Personal research site. Static, zero-build, no dependencies, no tracker.
 
 ```
 index.html
+robots.txt             crawler policy
+sitemap.xml            update lastmod if you care about freshness
 assets/css/style.css   styling + light/dark tokens
 assets/js/data.js      ← all content lives here
 assets/js/main.js      rendering, nav, scroll reveals
@@ -56,7 +58,8 @@ If you add motion later, keep it behind `prefers-reduced-motion`.
   public repositories appear. If you add work here, make sure you're happy for
   it to be public before a submission deadline.
 - **Citation count is a snapshot** (63, hardcoded in `index.html`). It will go
-  stale, so update it or delete the row.
+  stale, so update it or delete the row. The number links to Scholar so a
+  reader can check the current figure.
 
 ## Known source discrepancies
 

@@ -19,7 +19,7 @@ const THREADS = [
     ],
     marker: "episodic + non-episodic · gradual + abrupt shift",
     links: [
-      { label: "Paper", url: "https://github.com/machado-research/AgarCL" },
+      { label: "Paper (arXiv)", url: "https://arxiv.org/abs/2505.18347" },
       { label: "Code", url: "https://github.com/machado-research/AgarCL" }
     ]
   },
@@ -83,11 +83,11 @@ const PAPERS = [
     year: "2026",
     kind: "RLC",
     title: "The Cell Must Go On: Agar.io for Continual Reinforcement Learning",
-    authors: "<b>Mohamed A. Mohamed</b>, Kateryna Nekhomiazh, Marcos M. José, Andrew Patterson, Marlos C. Machado",
-    venue: "Reinforcement Learning Conference · Reinforcement Learning Journal",
+    authors: "<b>Mohamed A. Mohamed</b>, Kateryna Nekhomiazh, Vedant Vyas, Marcos M. José, Andrew Patterson, Marlos C. Machado",
+    venue: "Reinforcement Learning Conference · Reinforcement Learning Journal · arXiv:2505.18347",
     status: "Published",
     abs: "A continual RL environment built on Agar.io, modelling gradual and abrupt distribution shift across episodic and non-episodic settings, with a benchmark of standard value-based and policy-gradient methods.",
-    url: "https://github.com/machado-research/AgarCL"
+    url: "https://arxiv.org/abs/2505.18347"
   },
   {
     year: "2025",
