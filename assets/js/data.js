@@ -71,16 +71,6 @@ const THREADS = [
 const PAPERS = [
   {
     year: "2026",
-    kind: "RLC",
-    title: "The Cell Must Go On: Agar.io for Continual Reinforcement Learning",
-    authors: "<b>Mohamed A. Mohamed</b>, Kateryna Nekhomiazh, Marcos M. José, Andrew Patterson, Marlos C. Machado",
-    venue: "Reinforcement Learning Conference · Reinforcement Learning Journal",
-    status: "Published",
-    abs: "A continual RL environment built on Agar.io, modelling gradual and abrupt distribution shift across episodic and non-episodic settings, with a benchmark of standard value-based and policy-gradient methods.",
-    url: "https://github.com/machado-research/AgarCL"
-  },
-  {
-    year: "2026",
     kind: "Preprint",
     title: "Self-Referenced Social Preferences: Cooperation without Observing Others' Rewards",
     authors: "<b>Mohamed A. Mohamed</b>, Harshil Kotamreddy, Marcos Menon José",
@@ -90,14 +80,14 @@ const PAPERS = [
     url: "https://arxiv.org/abs/2610.07881"
   },
   {
-    year: "2024",
-    kind: "ICLR",
-    title: "CoT3DRef: Chain-of-Thoughts Data-Efficient 3D Visual Grounding",
-    authors: "Eslam Mohamed Bakr, <b>Mohamed Ayman</b>, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny",
-    venue: "International Conference on Learning Representations",
+    year: "2026",
+    kind: "RLC",
+    title: "The Cell Must Go On: Agar.io for Continual Reinforcement Learning",
+    authors: "<b>Mohamed A. Mohamed</b>, Kateryna Nekhomiazh, Marcos M. José, Andrew Patterson, Marlos C. Machado",
+    venue: "Reinforcement Learning Conference · Reinforcement Learning Journal",
     status: "Published",
-    abs: "Recasting 3D visual grounding as an interpretable chain of steps, anchors first and then the target, which substantially improves data efficiency over predicting the referent directly.",
-    url: "https://openreview.net/forum?id=ORUiqcLpV6"
+    abs: "A continual RL environment built on Agar.io, modelling gradual and abrupt distribution shift across episodic and non-episodic settings, with a benchmark of standard value-based and policy-gradient methods.",
+    url: "https://github.com/machado-research/AgarCL"
   },
   {
     year: "2025",
@@ -108,6 +98,16 @@ const PAPERS = [
     status: "Published",
     abs: "A large-scale 3D vision dataset for compositional recognition of objects together with their parts and the materials those parts are made of.",
     url: "https://arxiv.org/abs/2310.18511"
+  },
+  {
+    year: "2024",
+    kind: "ICLR",
+    title: "CoT3DRef: Chain-of-Thoughts Data-Efficient 3D Visual Grounding",
+    authors: "Eslam Mohamed Bakr, <b>Mohamed Ayman</b>, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny",
+    venue: "International Conference on Learning Representations",
+    status: "Published",
+    abs: "Recasting 3D visual grounding as an interpretable chain of steps, anchors first and then the target, which substantially improves data efficiency over predicting the referent directly.",
+    url: "https://openreview.net/forum?id=ORUiqcLpV6"
   }
 ];
 

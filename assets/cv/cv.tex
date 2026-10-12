@@ -1,232 +1,219 @@
 % Mohamed Ayman Mohamed, CV
-% Build:  tectonic cv.tex
-% Phone number and home location are intentionally omitted from this
-% public version. Keep it that way if you link it from the website.
+% Build:  tectonic cv.tex   (then rename cv.pdf)
+%
+% Deliberately omitted from this public version: phone number and home
+% location. Keep it that way if you link it from the website.
+% House style: no em dashes.
 
 \documentclass[10pt,a4paper]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[default,scale=0.94]{sourcesanspro}
 \usepackage{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{hyperref}
-\usepackage{fontawesome5}
+\usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
 
-\geometry{left=1.8cm, right=1.8cm, top=1.5cm, bottom=1.5cm}
+\geometry{left=1.5cm, right=1.5cm, top=1.05cm, bottom=1.0cm}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
+\linespread{1.0}
 
-\definecolor{primarycolor}{RGB}{0,51,102}
-\definecolor{secondarycolor}{RGB}{70,70,70}
-\definecolor{accentcolor}{RGB}{0,102,204}
-
-\titleformat{\section}
-  {\large\bfseries\color{primarycolor}}
-  {}{0em}{}[\color{primarycolor}\titlerule]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
-
-\titleformat{\subsection}
-  {\normalsize\bfseries\color{secondarycolor}}
-  {}{0em}{}
-\titlespacing*{\subsection}{0pt}{5pt}{2pt}
+% ---------- palette: ink, muted grey, one bronze accent ----------
+\definecolor{ink}{HTML}{16191C}
+\definecolor{muted}{HTML}{5C6066}
+\definecolor{accent}{HTML}{8A5D14}
+\color{ink}
 
 \hypersetup{
-    colorlinks=true,
-    linkcolor=accentcolor,
-    urlcolor=accentcolor,
-    pdftitle={Mohamed Ayman Mohamed, Curriculum Vitae},
-    pdfauthor={Mohamed Ayman Mohamed}
+  colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Mohamed Ayman Mohamed, Curriculum Vitae},
+  pdfauthor={Mohamed Ayman Mohamed}
 }
 
-\newcommand{\jobentry}[4]{
-    \subsection*{#1 | \normalfont\textit{#2}}
-    \textit{#3} \hfill \textcolor{secondarycolor}{#4}
+% ---------- section headings: small caps, bronze rule beneath ----------
+\titleformat{\section}
+  {\normalsize\bfseries\color{ink}}
+  {}{0em}{\MakeUppercase}[\vspace{-7pt}\textcolor{accent}{\rule{\textwidth}{1pt}}]
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+
+% ---------- entry macros ----------
+% \role{title}{organisation}{kind}{dates}
+\newcommand{\role}[4]{%
+  \vspace{3pt}
+  \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & \textcolor{muted}{\small #4}
+  \end{tabularx}\\[1pt]
+  \textcolor{accent}{#2}\;\textcolor{muted}{\small\textit{#3}}\vspace{2pt}
 }
 
-\newcommand{\eduentry}[4]{
-    \subsection*{#1}
-    \textit{#2} \hfill \textcolor{secondarycolor}{#3} \\
-    #4
+% \degree{degree}{school}{dates}{detail}
+\newcommand{\degree}[4]{%
+  \vspace{4pt}
+  \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & \textcolor{muted}{\small #3}
+  \end{tabularx}\\[1pt]
+  \textcolor{accent}{#2}\\[1pt]
+  {\small\textcolor{muted}{#4}}\vspace{2pt}
+}
+
+% \paper{title}{authors}{venue}{year}
+\newcommand{\paper}[4]{%
+  \vspace{4pt}
+  \noindent\begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & \textcolor{muted}{\small #4}
+  \end{tabularx}\\[1pt]
+  {\small #2}\\[1pt]
+  {\small\textcolor{accent}{#3}}\vspace{2pt}
+}
+
+\newlist{pts}{itemize}{1}
+\setlist[pts]{leftmargin=1.05em, itemsep=0.5pt, topsep=1.5pt, parsep=0pt,
+              label=\textcolor{accent}{\rule[0.14em]{0.3em}{0.3em}}}
+
+\newcommand{\skillrow}[2]{%
+  \noindent\begin{tabularx}{\textwidth}{@{}p{3.6cm}X@{}}
+    \textcolor{accent}{\footnotesize\textbf{#1}} & {\footnotesize #2}
+  \end{tabularx}\vspace{1.5pt}
 }
 
 \begin{document}
 
-% Header
-{\huge\bfseries\color{primarycolor} Mohamed Ayman Mohamed}
-
-\vspace{2pt}
-\textcolor{secondarycolor}{\rule{\textwidth}{0.5pt}}
-\vspace{4pt}
-
-\begin{tabular}{@{}l@{\hspace{1.2cm}}l@{\hspace{1.2cm}}l@{\hspace{1.2cm}}l@{}}
-\faEnvelope\ \href{mailto:mamoham3@ualberta.ca}{mamoham3@ualberta.ca} &
-\faLinkedin\ \href{https://www.linkedin.com/in/mohamed-ayman-mohamed-47497b197/}{LinkedIn} &
-\faGithub\ \href{https://github.com/mayman150}{GitHub} &
-\faGraduationCap\ \href{https://scholar.google.com/citations?user=5OnlOKMAAAAJ}{Google Scholar} \\
-\end{tabular}
-
-% Professional Summary
-\section*{Summary}
-
-AI research scientist and software engineer working on continual reinforcement
-learning, with experience spanning research (University of Alberta, KAUST,
-Microsoft) and production systems (AWS). Published at RLC, ICLR, and TPAMI;
-MSc with a 4.0 GPA. Built a continual RL environment and benchmark now used to
-study how agents cope with gradual and abrupt distribution shift. Interests
-span continual learning, reinforcement learning, representation learning, and
-distributed systems.
-
-% Research Experience
-\section*{Research Experience}
-
-\jobentry{Graduate Research Assistant, Reinforcement Learning}{Full-time}{University of Alberta, Machado Lab}{Apr 2024 -- Aug 2025}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Built a C++/Python continual reinforcement learning environment modelling \textbf{gradual} and \textbf{abrupt} distribution shifts in episodic and non-episodic settings, across \textbf{15} simulation scenarios.
-    \item Benchmarked \textbf{DQN, PPO}, and \textbf{SAC} on policy stability, convergence speed, and sample efficiency, exposing a \textbf{90\%} failure rate under continual learning conditions.
-    \item Roughly doubled throughput via CUDA rendering and asynchronous inference: grid observations from \textbf{1{,}200} to \textbf{2{,}200} steps/second, and screen observations from \textbf{800} to \textbf{1{,}600}.
-    \item Added quad-tree and precision-approximation structures to cut computational overhead, and a CNN feature-extraction pipeline learning compact state representations from high-dimensional inputs (\textbf{30\%} faster convergence, \textbf{25\%} better sample efficiency).
-    \item Containerised with Docker behind a CI/CD pipeline of \textbf{25+} automated tests; resolved memory leaks with Valgrind and tracked regressions with Google Benchmark.
-\end{itemize}
+% ================= header =================
+{\fontsize{24}{26}\selectfont\bfseries Mohamed Ayman Mohamed}
 
 \vspace{3pt}
+{\color{muted}Continual reinforcement learning. Research scientist and software engineer.}
 
-\jobentry{Machine Learning Research Intern}{Remote}{KAUST, King Abdullah University of Science and Technology}{Feb 2023 -- Oct 2023}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Implemented a chain-of-thought ground-truth generation tool, improving 3D object detection accuracy by \textbf{8\%} on complex visual grounding tasks.
-    \item Built a rule-based anchors parser for automated object localisation, published at \textbf{ICLR 2024}.
-    \item Engineered an NLP data pipeline using tokenisation, TF-IDF embeddings, and semantic filtering to parse and sort anchor descriptions, improving anchor--target matching precision by \textbf{15\%}.
-    \item Optimised \textbf{3DCoMPaT++} segmentation with \textbf{PointNet++} and diffusion-based refinement, deployed a full-server solution, and improved IoU by \textbf{10\%}.
-\end{itemize}
+\vspace{6pt}
+\textcolor{accent}{\rule{\textwidth}{1.2pt}}
+\vspace{5pt}
 
-\vspace{3pt}
+\noindent\begin{tabularx}{\textwidth}{@{}XXXX@{}}
+\footnotesize\faEnvelope\; \href{mailto:mamoham3@ualberta.ca}{mamoham3@ualberta.ca} &
+\footnotesize\faGraduationCap\; \href{https://scholar.google.com/citations?user=5OnlOKMAAAAJ}{Google Scholar} &
+\footnotesize\faGithub\; \href{https://github.com/mayman150}{github.com/mayman150} &
+\footnotesize\faLinkedin\; \href{https://www.linkedin.com/in/mohamed-ayman-mohamed-47497b197/}{LinkedIn}
+\end{tabularx}
 
-\jobentry{Undergraduate Research Assistant, Machine Learning}{Part-time}{American University in Cairo}{Sep 2022 -- Apr 2023}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Optimised disk-based approximate nearest-neighbour (ANN) search by designing an inverted-index query execution engine, achieving a \textbf{6$\times$} speedup over Microsoft's SPANN while maintaining recall and graph quality.
-    \item Improved retrieval accuracy by \textbf{15\%} using embeddings from autoencoders and transformer models; extracted \textbf{100k+} meaningful queries via autoencoder feature learning.
-    \item Established automated pipelines for embedding preprocessing and ANN index construction, reducing end-to-end latency by \textbf{30\%} on billion-scale datasets.
-    \item Created a COVID-19 policy optimisation framework using LSTM forecasting, deep Q-networks, and graph neural networks for regional modelling.
-\end{itemize}
+% ================= highlights =================
+\section{Highlights}
 
-% Work Experience
-\section*{Work Experience}
+\begin{pts}
+  \item \textbf{Research:} published at \textbf{RLC}, \textbf{ICLR}, and \textbf{TPAMI}, with a fourth paper under review. MSc in Computing Science (AI), University of Alberta, \textbf{4.0/4.0}, supervised by Marlos C. Machado.
+  \item \textbf{Open source:} author of \href{https://github.com/machado-research/AgarCL}{\textbf{AgarCL}}, a C++/Python continual RL environment and benchmark built so the task never stops changing, now used to study loss of plasticity.
+  \item \textbf{Software:} at AWS, cut region build-model authoring from \textbf{days to about five minutes} with an AI code-generation system on Amazon Bedrock, and started an automation program for EKS operations.
+  \item \textbf{Systems depth:} at home from CUDA kernels and Valgrind profiling up to distributed services, having written a pipelined RISC-V core, an x86-64 bootloader, and a fault-tolerant system in Rust.
+\end{pts}
 
-\jobentry{Software Engineer}{Full-time}{Amazon Web Services}{Sep 2025 -- Present}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-\item Reduced AWS region build-model creation from \textbf{days to five minutes} by designing an AI-powered code generation system on Amazon Bedrock.
-\item Initiated an AI automation program for EKS operational workflows, targeting the highest-impact repetitive tasks: build-model authoring, pipeline failure triage, ticket resolution, and dashboard analysis.
-\item Architected cross-partition observability infrastructure and automated data pipelines that adapt to regional constraints, reducing operational overhead by \textbf{40\%} and enabling zero-touch deployments.
-\item Owned end-to-end design and delivery of automated testing frameworks, regulatory compliance workflows, and a resilient resource cleanup API, reducing customer escalations by \textbf{25\%}.
-\end{itemize}
+% ================= research =================
+\section{Research Experience}
 
-\vspace{3pt}
+\role{Graduate Research Assistant, Reinforcement Learning}{University of Alberta, Machado Lab}{Full-time}{Apr 2024 -- Aug 2025}
+\begin{pts}
+  \item Built a C++/Python continual RL environment modelling \textbf{gradual} and \textbf{abrupt} distribution shift in episodic and non-episodic settings, across \textbf{15} simulation scenarios.
+  \item Benchmarked \textbf{DQN, PPO}, and \textbf{SAC} on policy stability, convergence speed, and sample efficiency, exposing a \textbf{90\%} failure rate under continual conditions.
+  \item Roughly doubled throughput with CUDA rendering, asynchronous inference, and quad-tree approximation: grid observations from \textbf{1{,}200} to \textbf{2{,}200} steps/second, screen from \textbf{800} to \textbf{1{,}600}.
+  \item Built a CNN feature-extraction pipeline learning compact state representations from high-dimensional inputs: \textbf{30\%} faster convergence, \textbf{25\%} better sample efficiency.
+  \item Containerised with Docker behind a CI/CD pipeline of \textbf{25+} automated tests; resolved memory leaks with Valgrind and tracked regressions with Google Benchmark.
+\end{pts}
 
-\jobentry{Software Engineer}{Contract}{University of Alberta}{Oct 2024 -- Apr 2025}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Developed a distributed simulation module in C\# and C++ adhering to the High-Level Architecture (HLA) standard, reducing communication latency by \textbf{20\%}.
-    \item Designed a scalable PostgreSQL database managing \textbf{500k+} records across \textbf{6} federates, enabling centralised performance analysis and real-time monitoring.
-    \item Deployed an N-tier architecture in ASP.NET with PostgreSQL supporting \textbf{500+} concurrent user requests at sub-second response times.
-    \item Embedded the CPython interpreter in a C\# application to run Python analysis and machine learning workflows inside the .NET environment.
-\end{itemize}
+\role{Machine Learning Research Intern}{KAUST, King Abdullah University of Science and Technology}{Remote}{Feb 2023 -- Oct 2023}
+\begin{pts}
+  \item Implemented a chain-of-thought ground-truth generation tool, improving 3D object detection accuracy by \textbf{8\%} on complex visual grounding tasks.
+  \item Built a rule-based anchors parser for automated object localisation, published at \textbf{ICLR 2024}, with an NLP pipeline (tokenisation, TF-IDF, semantic filtering) that lifted anchor to target matching precision \textbf{15\%}.
+  \item Optimised \textbf{3DCoMPaT++} segmentation with \textbf{PointNet++} and diffusion-based refinement, deployed a full-server solution, and improved IoU by \textbf{10\%}.
+\end{pts}
 
-\vspace{3pt}
+\role{Undergraduate Research Assistant, Machine Learning}{American University in Cairo}{Part-time}{Sep 2022 -- Apr 2023}
+\begin{pts}
+  \item Designed an inverted-index query execution engine for disk-based approximate nearest-neighbour search, reaching a \textbf{6$\times$} speedup over Microsoft's SPANN at comparable recall and graph quality.
+  \item Improved retrieval accuracy \textbf{15\%} with autoencoder and transformer embeddings, and cut end-to-end latency \textbf{30\%} on billion-scale datasets via automated embedding and index-construction pipelines.
+\end{pts}
 
-\jobentry{Applied Scientist Intern}{Full-time}{Microsoft, Zcode Team}{Jul 2022 -- Sep 2022}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Developed a meta-learning data distillation algorithm reducing dataset size by \textbf{99.9\%} while maintaining \textbf{95\%} of model performance across transformer architectures.
-    \item Benchmarked across multiple NLP datasets, achieving a \textbf{10\%} improvement over the state of the art in machine translation, classification, and named-entity recognition.
-    \item Automated \textbf{20} Python workflows for hyperparameter tuning and documented \textbf{5} optimisation procedures for the internal knowledge base.
-    \item Demonstrated empirically across \textbf{10} controlled experiments that model non-linearity significantly affects performance on distilled data.
-\end{itemize}
+% ================= work =================
+\section{Work Experience}
 
-\vspace{3pt}
+\role{Software Engineer}{Amazon Web Services}{Full-time}{Sep 2025 -- Present}
+\begin{pts}
+  \item Reduced AWS region build-model creation from \textbf{days to about five minutes} with an AI-powered code generation system on Amazon Bedrock.
+  \item Initiated an AI automation program for EKS operational workflows, targeting the highest-volume repetitive work: build-model authoring, pipeline failure triage, ticket resolution, and dashboard analysis.
+  \item Architected cross-partition observability infrastructure and adaptive data pipelines, cutting operational overhead \textbf{40\%} and enabling zero-touch deployments.
+  \item Delivered automated testing frameworks, compliance workflows, and a resilient resource cleanup API, reducing customer escalations \textbf{25\%}.
+\end{pts}
 
-\jobentry{Software Engineer}{Full-time}{Suitera L.L.C.}{Sep 2021 -- Apr 2022}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Identified bottlenecks in slab data processing for complex circuit simulations and multi-die package assemblies on Suitera's SuiEM platform.
-    \item Designed C++ approximation algorithms for precise slab representation, using heuristic and iterative methods to simplify complex geometries while preserving essential structural features.
-    \item Built aggregation techniques consolidating similar slab segments, significantly reducing computational overhead and simulation runtime.
-    \item Validated with custom GoogleTest fixtures, profiled with gdb and Valgrind, and developed OpenGL 3D visualisations of circuit structure and current flow.
-\end{itemize}
+\role{Software Engineer}{University of Alberta}{Contract}{Oct 2024 -- Apr 2025}
+\begin{pts}
+  \item Built a distributed simulation module in C\# and C++ against the High-Level Architecture standard, cutting communication latency by \textbf{20\%}.
+  \item Designed a PostgreSQL schema managing \textbf{500k+} records across \textbf{6} federates, behind an N-tier ASP.NET service handling \textbf{500+} concurrent requests at sub-second latency.
+  \item Embedded the CPython interpreter in C\# so Python analysis and ML workflows could run inside .NET.
+\end{pts}
 
-\vspace{3pt}
+\role{Applied Scientist Intern}{Microsoft, Zcode Team}{Full-time}{Jul 2022 -- Sep 2022}
+\begin{pts}
+  \item Developed a meta-learning data distillation algorithm cutting dataset size by \textbf{99.9\%} while holding \textbf{95\%} of model performance across transformer architectures.
+  \item Benchmarked across NLP datasets, improving \textbf{10\%} over the state of the art in machine translation, classification, and named-entity recognition.
+  \item Showed across \textbf{10} controlled experiments that model non-linearity significantly affects performance on distilled data.
+\end{pts}
 
-\jobentry{Full-Stack Software Engineering Intern}{Remote}{Envelope.network Inc.}{Jun 2021 -- Aug 2021}
-\begin{itemize}[leftmargin=*, itemsep=0pt, topsep=1pt, parsep=0pt]
-    \item Architected a cross-browser extension increasing user engagement by \textbf{15\%} through behavioural analysis of \textbf{1000+} browsing data points.
-    \item Built a \textbf{5}-stage recommendation pipeline ranking content for \textbf{500+} users, reaching \textbf{0.76} precision on textual data.
-    \item Built and maintained \textbf{10+} RESTful endpoints in Scala with Finatra, and integrated PostgreSQL via the Slick functional relational mapper.
-\end{itemize}
+\role{Software Engineer}{Suitera L.L.C.}{Full-time}{Sep 2021 -- Apr 2022}
+\begin{pts}
+  \item Found the bottleneck in slab data processing for complex circuit and multi-die package simulations, then wrote C++ approximation algorithms that simplify the geometry while preserving the structure that matters.
+  \item Built aggregation for similar slab segments to cut simulation runtime, validated with custom GoogleTest fixtures, profiled with gdb and Valgrind, and wrote OpenGL 3D visualisations of circuit structure and current flow.
+\end{pts}
 
-% Publications
-\section*{Publications}
+\role{Full-Stack Software Engineering Intern}{Envelope.network Inc.}{Remote}{Jun 2021 -- Aug 2021}
+\begin{pts}
+  \item Architected a cross-browser extension raising engagement \textbf{15\%}, plus a \textbf{5}-stage recommendation pipeline for \textbf{500+} users at \textbf{0.76} precision, served by \textbf{10+} Scala/Finatra endpoints over PostgreSQL.
+\end{pts}
 
-\textbf{The Cell Must Go On: Agar.io for Continual Reinforcement Learning} \\
-\textbf{Mohamed A. Mohamed}, Kateryna Nekhomiazh, Marcos M. Jos\'e, Andrew Patterson, Marlos C. Machado \\
-\textit{Reinforcement Learning Conference (RLC)} \hfill 2026
+% ================= publications =================
+\section{Publications}
 
-\vspace{3pt}
+\paper{Self-Referenced Social Preferences: Cooperation without Observing Others' Rewards}
+{\textbf{Mohamed A. Mohamed}, Harshil Kotamreddy, Marcos Menon Jos\'e}
+{Under review. Preprint: \href{https://arxiv.org/abs/2610.07881}{arXiv:2610.07881}}{2026}
 
-\textbf{Self-Referenced Social Preferences: Cooperation without Observing Others' Rewards} \\
-\textbf{Mohamed A. Mohamed}, Harshil Kotamreddy, Marcos Menon Jos\'e \\
-\textit{Under review; preprint: \href{https://arxiv.org/abs/2610.07881}{arXiv:2610.07881}} \hfill 2026
+\paper{The Cell Must Go On: Agar.io for Continual Reinforcement Learning}
+{\textbf{Mohamed A. Mohamed}, Kateryna Nekhomiazh, Marcos M. Jos\'e, Andrew Patterson, Marlos C. Machado}
+{Reinforcement Learning Conference (RLC). Code: \href{https://github.com/machado-research/AgarCL}{machado-research/AgarCL}}{2026}
 
-\vspace{3pt}
+\paper{3DCoMPaT++: An Improved Large-Scale 3D Vision Dataset for Compositional Recognition}
+{Habib Slim, Xiang Li, Yuchen Li, Mahmoud Ahmed, \textbf{Mohamed Ayman}, et al.}
+{IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)}{2025}
 
-\textbf{CoT3DRef: Chain-of-Thoughts Data-Efficient 3D Visual Grounding} \\
-Eslam Mohamed Bakr, \textbf{Mohamed Ayman}, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny \\
-\textit{International Conference on Learning Representations (\href{https://openreview.net/forum?id=ORUiqcLpV6}{ICLR})} \hfill 2024
+\paper{CoT3DRef: Chain-of-Thoughts Data-Efficient 3D Visual Grounding}
+{Eslam Mohamed Bakr, \textbf{Mohamed Ayman}, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny}
+{International Conference on Learning Representations (\href{https://openreview.net/forum?id=ORUiqcLpV6}{ICLR})}{2024}
 
-\vspace{3pt}
+% ================= education =================
+\section{Education}
 
-\textbf{3DCoMPaT++: An Improved Large-Scale 3D Vision Dataset for Compositional Recognition} \\
-Habib Slim, Xiang Li, Yuchen Li, Mahmoud Ahmed, \textbf{Mohamed Ayman}, et al. \\
-\textit{IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)} \hfill 2025
+\degree{MSc, Computing Science (Artificial Intelligence)}{University of Alberta}{Sep 2023 -- Aug 2025}
+{GPA 4.0/4.0. Supervisor: Prof. Marlos C. Machado. Travel Award 2024/25, Graduate Research Assistantship.}
 
-% Education
-\section*{Education}
+\degree{BSc, Computer Engineering, Minor in Mathematics}{American University in Cairo}{Sep 2018 -- May 2023}
+{GPA 3.97/4.0. Dean's List four consecutive years. Al-Ghurair Scholarship, 2018 to 2023. Bronze Medal, ECPC 2023; ACPC Finalist 2023.}
 
-\eduentry{MSc in Computer Science (Artificial Intelligence)}{University of Alberta}{Sep 2023 -- Aug 2025}{GPA: 4.0/4.0 \textbar\ Supervisor: Prof. Marlos C. Machado \textbar\ Awards: Travel Award 2024/25, Graduate Research Assistantship}
+% ================= teaching =================
+\section{Teaching}
 
-\vspace{3pt}
+\skillrow{Graduate TA, Alberta}{Fundamentals of Reinforcement Learning, Introduction to Machine Learning, Fundamentals of Databases, Introduction to Networks}
+\skillrow{Undergraduate TA, AUC}{Introduction to Machine Learning, Deep Learning in Practice, Analysis \& Design of Algorithms, Fundamentals of Computing II}
 
-\eduentry{BSc in Computer Engineering, Minor in Mathematics}{American University in Cairo}{Sep 2018 -- May 2023}{GPA: 3.97/4.0 \textbar\ Dean's List (4 consecutive years) \textbar\ Al-Ghurair Scholarship ('18--'23) \textbar\ Bronze Medal, ECPC '23; ACPC Finalist '23}
+% ================= skills =================
+\section{Technical Skills}
+\enlargethispage{2\baselineskip}
 
-% Teaching
-\section*{Teaching}
-
-\textbf{\color{primarycolor}Graduate Teaching Assistant, University of Alberta:} Fundamentals of Reinforcement Learning, Introduction to Machine Learning, Fundamentals of Databases, Introduction to Networks.
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}Undergraduate Teaching Assistant, American University in Cairo:} Introduction to Machine Learning, Deep Learning in Practice, Analysis \& Design of Algorithms, Fundamentals of Computing II.
-
-% Technical Skills
-\section*{Technical Skills}
-
-\textbf{\color{primarycolor}Programming Languages:} Python, C/C++, C\#, Java, Scala, JavaScript, Rust, SQL
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}ML/AI Frameworks:} PyTorch, TensorFlow, PyTorch Lightning, JAX, Scikit-Learn, Hugging Face, XGBoost
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}RL Libraries:} CleanRL, PFRL, Stable-Baselines3, RLlib, Gymnasium
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}NLP \& CV:} spaCy, NLTK, Transformers, OpenCV, PointNet++
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}Cloud \& DevOps:} AWS (CDK, Lambda, S3, EC2), Azure, Docker, Kubernetes, CI/CD
-
-\vspace{2pt}
-
-\textbf{\color{primarycolor}Low-level \& Tools:} CUDA, OpenMP, OpenGL, x86-64 Assembly, RISC-V, Verilog, CMake, Valgrind, Git
+\skillrow{Languages}{Python, C/C++, C\#, Java, Scala, Rust, JavaScript, SQL}
+\skillrow{Machine learning}{PyTorch, JAX, TensorFlow, PyTorch Lightning, Hugging Face, scikit-learn, XGBoost, Transformers, spaCy, OpenCV, PointNet++}
+\skillrow{Reinforcement learning}{CleanRL, PFRL, Stable-Baselines3, RLlib, Gymnasium}
+\skillrow{Cloud \& infrastructure}{AWS (Bedrock, CDK, Lambda, EC2, S3), Azure, Docker, Kubernetes, CI/CD, PostgreSQL, gRPC}
+\skillrow{Low-level \& tooling}{CUDA, OpenMP, OpenGL, x86-64 assembly, RISC-V, Verilog, CMake, Valgrind}
 
 \end{document}
