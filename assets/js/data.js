@@ -76,6 +76,7 @@ const PAPERS = [
     authors: "<b>Mohamed A. Mohamed</b>, Harshil Kotamreddy, Marcos Menon José",
     venue: "Preprint on arXiv:2610.07881",
     status: "Under review",
+    scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=5OnlOKMAAAAJ&citation_for_view=5OnlOKMAAAAJ:2osOgNQ5qMEC",
     abs: "Agents learn a model of their own reward, apply it to peers' observed transitions, and feed those self-referenced assessments into standard social preferences, producing cooperation, and often more equitable returns, without any access to others' reward signals.",
     url: "https://arxiv.org/abs/2610.07881"
   },
@@ -86,6 +87,8 @@ const PAPERS = [
     authors: "<b>Mohamed A. Mohamed</b>, Kateryna Nekhomiazh, Vedant Vyas, Marcos M. José, Andrew Patterson, Marlos C. Machado",
     venue: "Reinforcement Learning Conference · Reinforcement Learning Journal · arXiv:2505.18347",
     status: "Published",
+    scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=5OnlOKMAAAAJ&citation_for_view=5OnlOKMAAAAJ:9yKSN-GCB0IC",
+    cites: 3,
     abs: "A continual RL environment built on Agar.io, modelling gradual and abrupt distribution shift across episodic and non-episodic settings, with a benchmark of standard value-based and policy-gradient methods.",
     url: "https://arxiv.org/abs/2505.18347"
   },
@@ -96,6 +99,8 @@ const PAPERS = [
     authors: "Habib Slim, Xiang Li, Yuchen Li, Mahmoud Ahmed, <b>Mohamed Ayman</b>, et al.",
     venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence",
     status: "Published",
+    scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=5OnlOKMAAAAJ&citation_for_view=5OnlOKMAAAAJ:u-x6o8ySG0sC",
+    cites: 33,
     abs: "A large-scale 3D vision dataset for compositional recognition of objects together with their parts and the materials those parts are made of.",
     url: "https://arxiv.org/abs/2310.18511"
   },
@@ -103,9 +108,11 @@ const PAPERS = [
     year: "2024",
     kind: "ICLR",
     title: "CoT3DRef: Chain-of-Thoughts Data-Efficient 3D Visual Grounding",
-    authors: "Eslam Mohamed Bakr, <b>Mohamed Ayman</b>, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny",
+    authors: "Eslam Abdelrahman, <b>Mohamed Ayman</b>, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny",
     venue: "International Conference on Learning Representations",
     status: "Published",
+    scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=5OnlOKMAAAAJ&citation_for_view=5OnlOKMAAAAJ:u5HHmVD_uO8C",
+    cites: 27,
     abs: "Recasting 3D visual grounding as an interpretable chain of steps, anchors first and then the target, which substantially improves data efficiency over predicting the referent directly.",
     url: "https://openreview.net/forum?id=ORUiqcLpV6"
   }

@@ -57,9 +57,10 @@ If you add motion later, keep it behind `prefers-reduced-motion`.
 - **Unpublished research.** Only peer-reviewed papers, public preprints, and
   public repositories appear. If you add work here, make sure you're happy for
   it to be public before a submission deadline.
-- **Citation count is a snapshot** (63, hardcoded in `index.html`). It will go
-  stale, so update it or delete the row. The number links to Scholar so a
-  reader can check the current figure.
+- **Citation counts are snapshots.** The hero figures (63 citations, h-index 3)
+  are hardcoded in `index.html`; per-paper counts live in `PAPERS[].cites`.
+  All of them link to Scholar so a reader can check the current numbers.
+  Re-read https://scholar.google.com/citations?user=5OnlOKMAAAAJ to refresh.
 
 ## Known source discrepancies
 

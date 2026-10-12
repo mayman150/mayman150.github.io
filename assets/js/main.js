@@ -98,6 +98,7 @@
           ${p.authors ? `<p class="paper__authors">${p.authors}</p>` : ""}
           <p class="paper__abs">${esc(p.abs)}</p>
           ${p.venue ? `<p class="thread__venue"><b>${esc(p.venue)}</b></p>` : ""}
+          ${p.scholar ? `<div class="thread__links"><a class="pill" href="${esc(p.scholar)}" target="_blank" rel="noopener">Scholar${p.cites ? ` &middot; ${p.cites} citations` : ""} ${ARROW_SM}</a></div>` : ""}
         </div>
         <span class="badge paper__status">${esc(p.status)}</span>
       </li>`;
