@@ -31,7 +31,7 @@ Prose (About, masthead blurb) is plain text in `index.html`.
 
 ```bash
 cd assets/cv
-tectonic cv.tex && mv cv.pdf Mohamed-Ayman-Mohamed-CV.pdf
+tectonic cv.tex && mv cv.pdf Mohamed-A-Mohamed-CV.pdf
 ```
 
 `tectonic` downloads what it needs on first run. If you'd rather not keep the
