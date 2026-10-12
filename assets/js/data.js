@@ -83,9 +83,9 @@ const PAPERS = [
     year: "2026",
     kind: "Preprint",
     title: "Self-Referenced Social Preferences: Cooperation without Observing Others' Rewards",
-    authors: "<b>Mohamed A. Mohamed</b>, Harshil Kotamreddy, Marcos Menon José",
-    venue: "arXiv:2610.07881",
-    status: "Preprint",
+    authors: "<b>Mohamed Ayman Mohamed</b>, Harshil Kotamreddy, Marcos Menon José",
+    venue: "Preprint on arXiv:2610.07881",
+    status: "Under review",
     abs: "Agents learn a model of their own reward, apply it to peers' observed transitions, and feed those self-referenced assessments into standard social preferences, producing cooperation, and often more equitable returns, without any access to others' reward signals.",
     url: "https://arxiv.org/abs/2610.07881"
   },
