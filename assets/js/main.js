@@ -44,15 +44,19 @@
      2. Render: research threads
      --------------------------------------------------------- */
   const BADGE = {
-    active:   { label: "Active",      cls: "badge--live" },
-    review:   { label: "Under review", cls: "" },
-    proposal: { label: "Proposal",    cls: "" }
+    primary:   { label: "Core",     cls: "badge--live" },
+    secondary: { label: "Adjacent", cls: "" }
   };
+
+  const ARROW_SM = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
 
   const threadsEl = $("#threads");
   if (threadsEl && typeof THREADS !== "undefined") {
     threadsEl.innerHTML = THREADS.map((t, i) => {
-      const b = BADGE[t.status] || BADGE.active;
+      const b = BADGE[t.status] || BADGE.primary;
+      const links = (t.links || []).map((l) =>
+        `<a class="pill" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${ARROW_SM}</a>`
+      ).join("");
       return `
       <li class="thread reveal" style="--d:${i * 70}ms">
         <span class="thread__idx" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
@@ -63,11 +67,11 @@
           </div>
           <h3 class="thread__title">${esc(t.title)}</h3>
           <p class="thread__sub">${esc(t.sub)}</p>
-          ${t.formula ? `<code class="thread__formula">${esc(t.formula)}</code>` : ""}
+          ${t.marker ? `<code class="thread__formula">${esc(t.marker)}</code>` : ""}
         </div>
         <div class="thread__detail">
           ${t.body.map((p) => `<p>${p}</p>`).join("")}
-          ${t.venue ? `<p class="thread__venue"><b>${esc(t.venue)}</b></p>` : ""}
+          ${links ? `<div class="thread__links">${links}</div>` : ""}
         </div>
       </li>`;
     }).join("");
@@ -76,11 +80,11 @@
   /* ---------------------------------------------------------
      3. Render: writing
      --------------------------------------------------------- */
-  const papersEl = $("#papers");
+  const papersEl = $("#papersList");
   if (papersEl && typeof PAPERS !== "undefined") {
     papersEl.innerHTML = PAPERS.map((p, i) => {
       const title = p.url
-        ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
+        ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)} ${ARROW_SM}</a>`
         : esc(p.title);
       return `
       <li class="paper reveal" style="--d:${i * 60}ms">
@@ -90,12 +94,72 @@
         </div>
         <div>
           <h3 class="paper__title">${title}</h3>
+          ${p.authors ? `<p class="paper__authors">${p.authors}</p>` : ""}
           <p class="paper__abs">${esc(p.abs)}</p>
           ${p.venue ? `<p class="thread__venue"><b>${esc(p.venue)}</b></p>` : ""}
         </div>
         <span class="badge paper__status">${esc(p.status)}</span>
       </li>`;
     }).join("");
+  }
+
+  /* ---------------------------------------------------------
+     3b. Render: skills, experience timeline, education
+     --------------------------------------------------------- */
+  const skillsEl = $("#skills");
+  if (skillsEl && typeof SKILLS !== "undefined") {
+    skillsEl.innerHTML = SKILLS.map((g) => `
+      <div class="skillgroup">
+        <span class="skillgroup__name mono">${esc(g.group)}</span>
+        <ul class="taglist taglist--mono">
+          ${g.items.map((s) => `<li>${esc(s)}</li>`).join("")}
+        </ul>
+      </div>`).join("");
+  }
+
+  const timelineEl = $("#timeline");
+  if (timelineEl && typeof EXPERIENCE !== "undefined") {
+    timelineEl.innerHTML = EXPERIENCE.map((e, i) => `
+      <li class="job reveal${e.now ? " job--now" : ""}" style="--d:${i * 55}ms">
+        <div class="job__when">
+          <span class="mono job__period">${esc(e.period)}</span>
+          <span class="mono job__kind">${esc(e.kind)}</span>
+        </div>
+        <div class="job__what">
+          <h3 class="job__role">${esc(e.role)}</h3>
+          <p class="job__org">${esc(e.org)} <span class="job__place">· ${esc(e.place)}</span></p>
+          <ul class="job__points">
+            ${e.points.map((p) => `<li>${esc(p)}</li>`).join("")}
+          </ul>
+        </div>
+      </li>`).join("");
+  }
+
+  const eduEl = $("#education");
+  if (eduEl && typeof EDUCATION !== "undefined") {
+    eduEl.innerHTML = EDUCATION.map((e, i) => `
+      <li class="degree reveal" style="--d:${i * 60}ms">
+        <span class="mono degree__period">${esc(e.period)}</span>
+        <div>
+          <h4 class="degree__name">${esc(e.degree)}</h4>
+          <p class="degree__school">${esc(e.school)}</p>
+          <p class="degree__detail">${esc(e.detail)}</p>
+        </div>
+      </li>`).join("");
+  }
+
+  const teachEl = $("#teaching");
+  if (teachEl && typeof TEACHING !== "undefined") {
+    teachEl.innerHTML = TEACHING.map((t, i) => `
+      <li class="teach reveal" style="--d:${i * 60}ms">
+        <div>
+          <h4 class="teach__role">${esc(t.role)}</h4>
+          <p class="teach__org">${esc(t.org)}</p>
+        </div>
+        <ul class="taglist">
+          ${t.courses.map((c) => `<li>${esc(c)}</li>`).join("")}
+        </ul>
+      </li>`).join("");
   }
 
   /* ---------------------------------------------------------
@@ -108,10 +172,12 @@
   const ARROW = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
 
   if (cardsEl && typeof PROJECTS !== "undefined") {
-    cardsEl.innerHTML = PROJECTS.map((p, i) => `
-      <a class="card reveal" data-area="${esc(p.area)}" data-repo="${esc(p.repo)}"
+    cardsEl.innerHTML = PROJECTS.map((p, i) => {
+      const owner = p.owner || "mayman150";
+      return `
+      <a class="card reveal" data-area="${esc(p.area)}" data-repo="${esc(owner)}/${esc(p.repo)}"
          style="--d:${(i % 6) * 55}ms"
-         href="https://github.com/mayman150/${encodeURIComponent(p.repo)}"
+         href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(p.repo)}"
          target="_blank" rel="noopener">
         <div class="card__top">
           <span class="card__lang"><span class="dot" aria-hidden="true"></span>${esc(p.lang)}</span>
@@ -123,7 +189,8 @@
           <span class="card__area">${esc(p.area)}</span>
           <span class="card__go">Repository ${ARROW}</span>
         </div>
-      </a>`).join("");
+      </a>`;
+    }).join("");
 
     // pointer-tracked glow
     if (!reduced) {
@@ -396,22 +463,27 @@
      --------------------------------------------------------- */
   (function liveStars() {
     if (!cardsEl) return;
-    fetch("https://api.github.com/users/mayman150/repos?per_page=100", {
-      headers: { Accept: "application/vnd.github+json" }
-    })
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((repos) => {
-        if (!Array.isArray(repos)) return;
-        const byName = new Map(repos.map((r) => [r.name, r.stargazers_count]));
-        $$(".card", cardsEl).forEach((card) => {
-          const n = byName.get(card.dataset.repo);
-          if (!n) return;
-          const box = $("[data-stars]", card);
-          if (!box) return;
-          $("span", box).textContent = n;
-          box.hidden = false;
-        });
-      })
-      .catch(() => {});
+    const sources = [
+      "https://api.github.com/users/mayman150/repos?per_page=100",
+      "https://api.github.com/orgs/machado-research/repos?per_page=100"
+    ];
+    Promise.all(sources.map((u) =>
+      fetch(u, { headers: { Accept: "application/vnd.github+json" } })
+        .then((r) => (r.ok ? r.json() : []))
+        .catch(() => [])
+    )).then((lists) => {
+      const byName = new Map();
+      lists.flat().forEach((r) => {
+        if (r && r.full_name) byName.set(r.full_name, r.stargazers_count);
+      });
+      $$(".card", cardsEl).forEach((card) => {
+        const n = byName.get(card.dataset.repo);
+        if (!n) return;
+        const box = $("[data-stars]", card);
+        if (!box) return;
+        $("span", box).textContent = n;
+        box.hidden = false;
+      });
+    }).catch(() => {});
   })();
 })();

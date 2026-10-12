@@ -15,29 +15,43 @@ Everything you'd normally want to change is in **`assets/js/data.js`**:
 
 | Export | Drives |
 |---|---|
-| `THREADS` | the Research section |
-| `PAPERS` | the Writing section |
-| `PROJECTS` / `AREAS` | the Projects grid and its filter chips |
+| `THREADS` | Research |
+| `PAPERS` | Papers |
+| `EXPERIENCE` | Experience timeline |
+| `EDUCATION` | Education |
+| `TEACHING` | Teaching |
+| `SKILLS` | the Toolkit panel |
+| `PROJECTS` / `AREAS` | Projects grid and its filter chips |
 
 Prose (the About section, hero blurb) is plain text in `index.html`.
 
-## Before publishing — fill these in
+## Editorial policy
 
-Four placeholders are marked in `index.html` with `data-placeholder` and render
-in grey italics:
+**Only publicly released work appears on this site.** Peer-reviewed papers,
+public preprints, and public repositories. Unpublished and in-progress research
+is deliberately left off — if you add a new project here, make sure you're happy
+for it to be public before a submission deadline.
 
-- `email` — replace `mailto:REPLACE@EXAMPLE.COM`
-- `scholar` — Google Scholar URL
-- `linkedin` — LinkedIn URL
+Two other deliberate omissions:
 
-Delete any `<a class="link" …>` block you don't want. Also review:
+- **No phone number.** It's on the CV but a public page invites spam; add it
+  only if you want it scraped.
+- **Citation count is a snapshot** (63, from Google Scholar). It's a static
+  number in `index.html` (`data-count="63"`) and will go stale — update it when
+  you think of it, or delete that row.
 
-- **Venue names.** The multi-agent paper is listed as "Under review" with no
-  venue, because naming a venue during double-blind review can conflict with
-  anonymity policy. Add it in `data.js` (`PAPERS[0].venue`) when you're ready.
-- **Unpublished work.** The STOP and Shift-Aware SGD descriptions are
-  deliberately high level. Trim further if you'd rather not signal direction
-  before submitting.
+## Known source discrepancies
+
+Your three CVs disagree in a few places. What the site uses, and why:
+
+| Field | Site uses | Note |
+|---|---|---|
+| Location | Vancouver | Newest CV; older two say Edmonton |
+| Scholar ID | `5OnlOKMAAAAJ` | The one you sent; older CVs cite `UIcj1-QAAAAJ` |
+| 3DCoMPaT++ year | 2025 | Scholar says 2025, your CV says 2024 |
+| The Cell Must Go On | RLC 2026, published | An older CV lists it as submitted to NeurIPS '25 |
+
+Fix any of these in `data.js` if the site is wrong.
 
 ## Local preview
 
@@ -46,22 +60,28 @@ python3 -m http.server 8080
 # → http://localhost:8080
 ```
 
+Append `?theme=dark` or `?theme=light` to force a theme while checking layout.
+
 ## Deploy to GitHub Pages
 
 This repo name (`mayman150.github.io`) makes it a **user site**, served at
 `https://mayman150.github.io/`.
 
+The repo does not exist on GitHub yet and has never been pushed. To publish:
+
 ```bash
-gh auth login                      # current token is expired
+gh auth login                      # the stored token is expired
 gh repo create mayman150.github.io --public --source=. --push
 ```
 
 Then: repo **Settings → Pages → Build and deployment → Source: Deploy from a
 branch**, branch `main`, folder `/ (root)`. First build takes a minute or two.
 
-Without the `gh` CLI, create the repo in the browser and:
+Pushing over SSH works too, but note your *default* SSH key authenticates as
+`AgarCL`, not `mayman150`. Pin the right key for this repo:
 
 ```bash
+git config core.sshCommand "ssh -i ~/.ssh/id_ed25519_mayman150 -o IdentitiesOnly=yes"
 git remote add origin git@github.com:mayman150/mayman150.github.io.git
 git push -u origin main
 ```
@@ -75,6 +95,7 @@ git push -u origin main
 - The hero canvas advects particles through a flow field. It pauses when the
   tab is hidden or once scrolled past, and is disabled entirely under
   `prefers-reduced-motion`.
-- Star counts come from the public GitHub API at page load and fail silently
-  on rate limit; the baked-in values in `data.js` are the fallback.
+- Star counts come from the public GitHub API at page load (your account plus
+  the `machado-research` org) and fail silently on rate limit; the baked-in
+  values in `data.js` are the fallback.
 - Fonts: Instrument Serif (display), Hanken Grotesk (body), JetBrains Mono.

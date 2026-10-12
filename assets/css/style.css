@@ -509,7 +509,10 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .panel:hover { border-color: var(--line-2); transform: translateY(-2px); }
 .panel__title { color: var(--text-3); margin-bottom: 1rem; }
 
-.taglist { display: flex; flex-wrap: wrap; gap: .4rem; }
+.taglist {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  align-items: flex-start; align-content: flex-start;
+}
 .taglist li {
   padding: .34rem .72rem;
   border: 1px solid var(--line);
@@ -620,6 +623,119 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   .thread__sub { max-width: none; }
 }
 
+.thread__links { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.15rem; }
+.pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .36rem .75rem;
+  border: 1px solid var(--line-2); border-radius: 999px;
+  font-size: .75rem; color: var(--text-2);
+  transition: color .28s, border-color .28s, background-color .28s, transform .28s;
+}
+.pill svg { width: .7rem; height: .7rem; }
+.pill:hover {
+  color: var(--brass); border-color: var(--brass);
+  background: color-mix(in srgb, var(--brass) 9%, transparent);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   skill groups
+   ============================================================ */
+.skillgroup + .skillgroup { margin-top: 1rem; }
+.skillgroup__name {
+  display: block; margin-bottom: .5rem;
+  color: var(--brass); font-size: .5625rem;
+}
+
+/* ============================================================
+   experience timeline
+   ============================================================ */
+.sechead--sub {
+  margin-top: clamp(2.75rem, 6vw, 4.5rem);
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+.sechead__title--sm { font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+
+.timeline { border-top: 1px solid var(--line); }
+
+.job {
+  position: relative;
+  display: grid;
+  grid-template-columns: 11.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.4rem, 3vw, 2rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: background-color .4s;
+}
+.job__when { display: flex; flex-direction: column; gap: .4rem; }
+.job__period { color: var(--text-2); letter-spacing: .09em; }
+.job__kind {
+  width: max-content;
+  padding: .16rem .5rem;
+  border: 1px solid var(--line); border-radius: 3px;
+  font-size: .5625rem; color: var(--text-3);
+}
+.job--now .job__period { color: var(--brass); }
+.job--now .job__kind { border-color: var(--brass); color: var(--brass); }
+
+.job__role {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(1.2rem, 1.05rem + .5vw, 1.5rem);
+  line-height: 1.2; letter-spacing: -.01em;
+  text-wrap: balance;
+}
+.job__org { margin-top: .25rem; font-size: .9375rem; color: var(--text); }
+.job__place { color: var(--text-3); }
+
+.job__points { margin-top: .9rem; display: grid; gap: .5rem; }
+.job__points li {
+  position: relative; padding-left: 1.05rem;
+  font-size: .9063rem; line-height: 1.58; color: var(--text-2);
+  text-wrap: pretty;
+}
+.job__points li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--brass); opacity: .55;
+}
+
+@media (max-width: 760px) {
+  .job { grid-template-columns: 1fr; gap: .7rem; }
+  .job__when { flex-direction: row; align-items: center; gap: .7rem; }
+}
+
+/* ============================================================
+   education + teaching
+   ============================================================ */
+.edu, .teaching { border-top: 1px solid var(--line); }
+
+.degree, .teach {
+  display: grid;
+  grid-template-columns: 11.5rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.degree__period { color: var(--text-2); letter-spacing: .09em; padding-top: .2rem; }
+.degree__name {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 1.1875rem; line-height: 1.25; letter-spacing: -.01em;
+}
+.degree__school { margin-top: .2rem; font-size: .9375rem; color: var(--text); }
+.degree__detail { margin-top: .4rem; font-size: .875rem; color: var(--text-2); text-wrap: pretty; }
+
+.teach__role {
+  font-family: var(--serif); font-weight: 400;
+  font-size: 1.125rem; line-height: 1.25;
+}
+.teach__org { margin-top: .15rem; font-size: .875rem; color: var(--text-3); }
+.teach .taglist li { font-size: .75rem; }
+
+@media (max-width: 760px) {
+  .degree, .teach { grid-template-columns: 1fr; gap: .6rem; }
+}
+
 /* ============================================================
    papers
    ============================================================ */
@@ -643,6 +759,22 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   line-height: 1.2; letter-spacing: -.01em;
   text-wrap: balance;
 }
+.paper__title a { display: inline; }
+.paper__title svg {
+  display: inline; width: .72em; height: .72em;
+  vertical-align: baseline; color: var(--text-3);
+  transition: color .3s;
+}
+.paper__title a:hover { color: var(--brass); }
+.paper__title a:hover svg { color: var(--brass); }
+
+.paper__authors {
+  margin-top: .4rem;
+  font-size: .8438rem; line-height: 1.5; color: var(--text-3);
+  max-width: 76ch;
+}
+.paper__authors b { color: var(--text); font-weight: 600; }
+
 .paper__abs {
   margin-top: .55rem;
   font-size: .9375rem; color: var(--text-2); max-width: 70ch; text-wrap: pretty;
