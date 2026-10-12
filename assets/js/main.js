@@ -1,5 +1,5 @@
 /* ============================================================
-   Mohamed A. Mohamed: site behaviour
+   Mohamed Ayman Mohamed: site behaviour
    No dependencies. Degrades cleanly if anything is unavailable.
    ============================================================ */
 (function () {
