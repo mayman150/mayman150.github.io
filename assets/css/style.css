@@ -766,10 +766,18 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: clamp(1.5rem, 4vw, 4rem);
-  border-top: 1px solid var(--line);
 }
+/* a lone link reads better spanning the full measure */
+.contact__links:has(> .link:only-child) { grid-template-columns: 1fr; }
 @media (max-width: 680px) {
   .contact__links { grid-template-columns: 1fr; }
+}
+.contact__links > .link:first-child { border-top: 1px solid var(--line); }
+/* in the two-column layout the second link also starts a row */
+@media (min-width: 681px) {
+  .contact__links:not(:has(> .link:only-child)) > .link:nth-child(2) {
+    border-top: 1px solid var(--line);
+  }
 }
 .link {
   display: flex; align-items: center; gap: .75rem;
