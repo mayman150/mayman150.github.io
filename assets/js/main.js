@@ -25,7 +25,7 @@
     root.dataset.theme = name;
     if (remember) { try { localStorage.setItem(STORE, name); } catch (_) {} }
     document.querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", name === "light" ? "#f6f2ea" : "#0a0c0d");
+      ?.setAttribute("content", name === "light" ? "#f7f8fa" : "#0e1116");
   }
 
   (function initTheme() {
