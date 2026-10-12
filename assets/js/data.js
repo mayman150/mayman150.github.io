@@ -1,5 +1,5 @@
 /* ============================================================
-   Site content. Edit this file — nothing else — to update the site.
+   Site content. Edit this file (and nothing else) to update the site.
 
    Only publicly released work appears here: peer-reviewed papers,
    public preprints, and public repositories. Unpublished and
@@ -14,7 +14,7 @@ const THREADS = [
     title: "Benchmarks for agents that never stop learning",
     sub: "Most RL benchmarks quietly assume the problem holds still. AgarCL removes that assumption.",
     body: [
-      "Almost every standard RL benchmark hands the agent a fixed task and measures how well it eventually solves it. Continual RL asks a harder question: what happens when there is no <em>eventually</em> — when the distribution keeps moving and the agent has to keep adapting for as long as it runs.",
+      "Almost every standard RL benchmark hands the agent a fixed task and measures how well it eventually solves it. Continual RL asks a harder question: what happens when there is no <em>eventually</em>, because the distribution keeps moving and the agent has to keep adapting for as long as it runs.",
       "I built <strong>AgarCL</strong>, a C++/Python environment based on Agar.io that models both gradual and abrupt distribution shift, in episodic and non-episodic settings. It is deliberately awkward for conventional methods: the observation space is high-dimensional, the agent's own growth changes the dynamics, and there is no natural episode boundary to reset behind."
     ],
     marker: "episodic + non-episodic · gradual + abrupt shift",
@@ -30,9 +30,9 @@ const THREADS = [
     sub: "Benchmarking value-based and policy-gradient methods when the ground keeps moving.",
     body: [
       "Having an environment that shifts is only useful if you then measure honestly against it. I ran a benchmark study across value-based and policy-gradient families under continual conditions, and the headline result is unflattering to all of them: methods that look strong on stationary tasks degrade sharply once adaptation has to continue indefinitely.",
-      "The follow-on question is representational. A convolutional feature-extraction pipeline that learns compact state representations from high-dimensional observations recovered a meaningful share of that gap — faster convergence and better sample efficiency — which suggests a good deal of the failure is about what the network can still represent after training, not only about the learning rule."
+      "The follow-on question is representational. A convolutional feature-extraction pipeline that learns compact state representations from high-dimensional observations recovered a meaningful share of that gap, converging faster and using fewer samples, which suggests a good deal of the failure is about what the network can still represent after training, not only about the learning rule."
     ],
-    marker: "DQN · PPO · SAC   —   stability, convergence, sample efficiency",
+    marker: "DQN / PPO / SAC   ·   stability, convergence, sample efficiency",
     links: [
       { label: "Benchmark code", url: "https://github.com/machado-research/AgarCL-benchmark" }
     ]
@@ -44,9 +44,9 @@ const THREADS = [
     sub: "Social preferences grounded in an agent's own model of value, applied to what it sees others do.",
     body: [
       "Social preferences reliably produce cooperation in multi-agent RL, but nearly all of them assume an agent can read its peers' reward signals. People cannot do that. We watch what others <em>do</em> and how it turns out for them, and judge it by our own lights.",
-      "Each agent learns a model of its own reward, applies that model to other agents' observed transitions, and feeds the resulting self-referenced assessments into standard social preferences. Across Escape Room, Clean Up, and Commons Harvest, agents learn to cooperate without reward access — and often divide the joint return <strong>more equitably</strong> than agents that can see the true rewards."
+      "Each agent learns a model of its own reward, applies that model to other agents' observed transitions, and feeds the resulting self-referenced assessments into standard social preferences. Across Escape Room, Clean Up, and Commons Harvest, agents learn to cooperate without reward access, and often divide the joint return <strong>more equitably</strong> than agents that can see the true rewards."
     ],
-    marker: "r̂ⱼ = R̂ᵢ(sⱼ, aⱼ, s′ⱼ)   —   peer outcomes, own yardstick",
+    marker: "r̂ⱼ = R̂ᵢ(sⱼ, aⱼ, s′ⱼ)   ·   peer outcomes, own yardstick",
     links: [
       { label: "arXiv:2610.07881", url: "https://arxiv.org/abs/2610.07881" }
     ]
@@ -57,7 +57,7 @@ const THREADS = [
     title: "Grounding language in 3D scenes",
     sub: "Chain-of-thought supervision for 3D visual grounding, and large-scale compositional 3D data.",
     body: [
-      "Before moving to reinforcement learning I worked on 3D vision and language at KAUST. <strong>CoT3DRef</strong> reformulates 3D visual grounding as a sequence of interpretable steps — locate the anchors, then the target — which makes the task markedly more data-efficient than predicting the referent in one shot.",
+      "Before moving to reinforcement learning I worked on 3D vision and language at KAUST. <strong>CoT3DRef</strong> reformulates 3D visual grounding as a sequence of interpretable steps (locate the anchors, then the target), which makes the task markedly more data-efficient than predicting the referent in one shot.",
       "Alongside it, <strong>3DCoMPaT++</strong> contributed a large-scale 3D vision dataset for compositional recognition, where the task is to recognise not just objects but their parts and the materials those parts are made of."
     ],
     links: [
@@ -86,7 +86,7 @@ const PAPERS = [
     authors: "<b>Mohamed Ayman Mohamed</b>, Harshil Kotamreddy, Marcos Menon José",
     venue: "arXiv:2610.07881",
     status: "Preprint",
-    abs: "Agents learn a model of their own reward, apply it to peers' observed transitions, and feed those self-referenced assessments into standard social preferences — producing cooperation, and often more equitable returns, without any access to others' reward signals.",
+    abs: "Agents learn a model of their own reward, apply it to peers' observed transitions, and feed those self-referenced assessments into standard social preferences, producing cooperation, and often more equitable returns, without any access to others' reward signals.",
     url: "https://arxiv.org/abs/2610.07881"
   },
   {
@@ -96,7 +96,7 @@ const PAPERS = [
     authors: "Eslam Mohamed Bakr, <b>Mohamed Ayman</b>, Mahmoud Ahmed, Habib Slim, Mohamed Elhoseiny",
     venue: "International Conference on Learning Representations",
     status: "Published",
-    abs: "Recasting 3D visual grounding as an interpretable chain of steps — anchors first, then the target — which substantially improves data efficiency over predicting the referent directly.",
+    abs: "Recasting 3D visual grounding as an interpretable chain of steps, anchors first and then the target, which substantially improves data efficiency over predicting the referent directly.",
     url: "https://openreview.net/forum?id=ORUiqcLpV6"
   },
   {
@@ -116,7 +116,7 @@ const EXPERIENCE = [
   {
     role: "Software Engineer",
     org: "Amazon Web Services",
-    period: "Sep 2025 — Present",
+    period: "Sep 2025–Present",
     kind: "Industry",
     now: true,
     points: [
@@ -127,13 +127,13 @@ const EXPERIENCE = [
   },
   {
     role: "Graduate Research Assistant, Reinforcement Learning",
-    org: "University of Alberta — Machado Lab",
-    period: "Apr 2024 — Aug 2025",
+    org: "University of Alberta, Machado Lab",
+    period: "Apr 2024–Aug 2025",
     kind: "Research",
     points: [
       "Built a C++/Python continual RL environment modelling gradual and abrupt distribution shift in episodic and non-episodic settings, across 15 simulation scenarios.",
       "Benchmarked DQN, PPO, and SAC on policy stability, convergence speed, and sample efficiency to validate the environment as a continual RL benchmark.",
-      "Roughly doubled throughput — 1,200 to 2,200 steps/second on grid observations, 800 to 1,600 on screen observations — via CUDA rendering and asynchronous inference.",
+      "Roughly doubled throughput via CUDA rendering and asynchronous inference: 1,200 to 2,200 steps/second on grid observations, and 800 to 1,600 on screen observations.",
       "Added quad-tree and precision-approximation structures to cut computational overhead, and a CNN feature-extraction pipeline for compact state representations.",
       "Containerised with Docker behind a CI/CD pipeline of 25+ automated tests; chased memory leaks with Valgrind and regressions with Google Benchmark."
     ]
@@ -141,7 +141,7 @@ const EXPERIENCE = [
   {
     role: "Software Engineer (Contract)",
     org: "University of Alberta",
-    period: "Oct 2024 — Apr 2025",
+    period: "Oct 2024–Apr 2025",
     kind: "Industry",
     points: [
       "Built a distributed simulation module in C# and C++ against the High-Level Architecture standard, cutting communication latency by 20%.",
@@ -152,17 +152,17 @@ const EXPERIENCE = [
   {
     role: "Machine Learning Research Intern",
     org: "KAUST",
-    period: "Feb 2023 — Oct 2023",
+    period: "Feb 2023–Oct 2023",
     kind: "Research",
     points: [
-      "Implemented chain-of-thought ground-truth generation and a rule-based anchors parser for 3D visual grounding — published at ICLR 2024.",
+      "Implemented chain-of-thought ground-truth generation and a rule-based anchors parser for 3D visual grounding, published at ICLR 2024.",
       "Improved 3DCoMPaT++ segmentation with PointNet++ and diffusion-based refinement; co-authored the TPAMI paper on the dataset."
     ]
   },
   {
     role: "Undergraduate Research Assistant",
     org: "American University in Cairo",
-    period: "Sep 2022 — Apr 2023",
+    period: "Sep 2022–Apr 2023",
     kind: "Research",
     points: [
       "Designed an inverted-index query execution engine for disk-based approximate nearest-neighbour search, reaching a 6× speedup over Microsoft's SPANN at comparable recall.",
@@ -171,8 +171,8 @@ const EXPERIENCE = [
   },
   {
     role: "Applied Scientist Intern",
-    org: "Microsoft — Zcode",
-    period: "Jul 2022 — Sep 2022",
+    org: "Microsoft, Zcode team",
+    period: "Jul 2022–Sep 2022",
     kind: "Research",
     points: [
       "Developed a meta-learning data distillation algorithm cutting dataset size by 99.9% while holding ~95% of model performance across transformer architectures.",
@@ -182,7 +182,7 @@ const EXPERIENCE = [
   {
     role: "Software Engineer",
     org: "Suitera",
-    period: "Sep 2021 — Apr 2022",
+    period: "Sep 2021–Apr 2022",
     kind: "Industry",
     points: [
       "Found the bottleneck in slab data processing for complex circuit and multi-die package simulations, then wrote C++ approximation algorithms that simplify the geometry while preserving the structure that matters.",
@@ -193,7 +193,7 @@ const EXPERIENCE = [
   {
     role: "Full-Stack Software Engineering Intern",
     org: "Envelope.network",
-    period: "Jun 2021 — Aug 2021",
+    period: "Jun 2021–Aug 2021",
     kind: "Industry",
     points: [
       "Built a cross-browser extension and a five-stage recommendation pipeline ranking content from behavioural analysis for 500+ users, at 0.76 precision.",
@@ -204,15 +204,15 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    degree: "MSc, Computer Science — Artificial Intelligence",
+    degree: "MSc, Computer Science (Artificial Intelligence)",
     school: "University of Alberta",
-    period: "2023 — 2025",
+    period: "2023–2025",
     detail: "GPA 4.0 / 4.0 · Supervisor: Prof. Marlos C. Machado · Travel Award 2024/25, Graduate Research Assistantship"
   },
   {
-    degree: "BSc, Computer Engineering — Minor in Mathematics",
+    degree: "BSc, Computer Engineering (Minor in Mathematics)",
     school: "American University in Cairo",
-    period: "2018 — 2023",
+    period: "2018–2023",
     detail: "GPA 3.97 / 4.0 · Dean's List, four consecutive years · Al-Ghurair Scholarship · Bronze Medal, ECPC 2023"
   }
 ];
@@ -284,7 +284,7 @@ const PROJECTS = [
     name: "Tomasulo's Algorithm Simulator",
     repo: "Simulating-Tomasulo-s-algorithm",
     area: "Hardware", lang: "C++", stars: 0,
-    desc: "Cycle-accurate model of an out-of-order 16-bit RISC processor using Tomasulo's algorithm without speculation — reservation stations, register renaming, and a common data bus."
+    desc: "Cycle-accurate model of an out-of-order 16-bit RISC processor using Tomasulo's algorithm without speculation, with reservation stations, register renaming, and a common data bus."
   },
   {
     name: "SafeBox",
@@ -308,7 +308,7 @@ const PROJECTS = [
     name: "EM & Affinity Propagation from Scratch",
     repo: "Expectation-Maximization-and-Afainity-Propgation-implementation-from-scratch",
     area: "Learning", lang: "Jupyter", stars: 0,
-    desc: "Both clustering algorithms implemented from the maths up — no library calls — to see exactly where responsibilities and message passing come from."
+    desc: "Both clustering algorithms implemented from the maths up, with no library calls, to see exactly where responsibilities and message passing come from."
   },
   {
     name: "Sentiment-Driven Trading Strategy",
@@ -332,7 +332,7 @@ const PROJECTS = [
     name: "Code Prodigy Library",
     repo: "Code-Prodigy-Library",
     area: "Tools", lang: "C++", stars: 0,
-    desc: "A competitive-programming reference implementation set — algorithms, data structures, and helpers kept ready to paste under time pressure."
+    desc: "A competitive-programming reference implementation set: algorithms, data structures, and helpers kept ready to paste under time pressure."
   },
   {
     name: "Premier League Database",

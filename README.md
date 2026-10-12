@@ -1,6 +1,6 @@
 # mayman150.github.io
 
-Personal research site — static, zero-build, no dependencies, no tracker.
+Personal research site. Static, zero-build, no dependencies, no tracker.
 
 ```
 index.html
@@ -35,14 +35,14 @@ tectonic cv.tex && mv cv.pdf Mohamed-Ayman-Mohamed-CV.pdf
 ```
 
 `tectonic` downloads what it needs on first run. If you'd rather not keep the
-`.tex` public, delete it — only the PDF is linked.
+`.tex` public, delete it; only the PDF is linked.
 
 ## Design intent
 
 Typeset like a technical document, not a landing page. Serif headings, mono
 metadata labels, hairline rules, one brass accent, dark and light themes.
 Deliberately **no** hero animation, no scrolling marquee, no cursor effects, no
-full-screen splash — content starts at the top of the page.
+full-screen splash. Content starts at the top of the page.
 
 If you add motion later, keep it behind `prefers-reduced-motion`.
 
@@ -56,7 +56,7 @@ If you add motion later, keep it behind `prefers-reduced-motion`.
   public repositories appear. If you add work here, make sure you're happy for
   it to be public before a submission deadline.
 - **Citation count is a snapshot** (63, hardcoded in `index.html`). It will go
-  stale — update it or delete the row.
+  stale, so update it or delete the row.
 
 ## Known source discrepancies
 

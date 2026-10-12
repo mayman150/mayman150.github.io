@@ -1,5 +1,5 @@
 /* ============================================================
-   Mohamed Ayman Mohamed — portfolio
+   Mohamed Ayman Mohamed: portfolio
    Restrained editorial: ink, paper, one brass accent.
    Typeset like a technical document, not a landing page.
    ============================================================ */
@@ -257,10 +257,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
   width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: 3px;
   border: 1px solid var(--line-2);
-  filter: grayscale(1) contrast(1.04);
-  transition: filter .4s var(--ease);
 }
-.portrait:hover img { filter: none; }
 
 .facts { display: grid; border-top: 1px solid var(--line); }
 .facts__row {
@@ -691,7 +688,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round
 .foot__dim { opacity: .8; }
 
 /* ============================================================
-   reveal — a short fade, nothing more
+   reveal: a short fade, nothing more
    ============================================================ */
 .reveal {
   opacity: 0;
