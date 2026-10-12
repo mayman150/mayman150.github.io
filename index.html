@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mohamed Ayman Mohamed — Reinforcement Learning Research</title>
+
+<meta name="description" content="Mohamed Ayman Mohamed — reinforcement learning researcher. Credit assignment in reasoning traces, learning under distribution shift, cooperation in multi-agent systems." />
+<meta name="author" content="Mohamed Ayman Mohamed" />
+<meta name="theme-color" content="#080a0b" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Mohamed Ayman Mohamed — Reinforcement Learning Research" />
+<meta property="og:description" content="Credit assignment in reasoning traces, learning under distribution shift, and cooperation without shared rewards." />
+<meta property="og:url" content="https://mayman150.github.io/" />
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/57917939?v=4" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23080a0b'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='58' fill='%23d9a253' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+<!-- ░░ atmosphere ░░ -->
+<div class="scroll-rail" aria-hidden="true"><span id="scrollProgress"></span></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<canvas class="field" id="field" aria-hidden="true"></canvas>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<!-- ░░ nav ░░ -->
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="Home">
+    <span class="nav__glyph">M</span>
+    <span class="nav__markText">Mohamed&nbsp;Ayman</span>
+  </a>
+
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#about" data-nav>About</a>
+    <a href="#research" data-nav>Research</a>
+    <a href="#writing" data-nav>Writing</a>
+    <a href="#work" data-nav>Projects</a>
+    <a href="#contact" data-nav>Contact</a>
+  </nav>
+
+  <div class="nav__tools">
+    <button class="iconbtn" id="themeToggle" type="button" aria-label="Switch colour theme" title="Switch theme">
+      <svg viewBox="0 0 24 24" class="ic ic--moon" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      <svg viewBox="0 0 24 24" class="ic ic--sun" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.6M12 18.8v2.6M2.6 12h2.6M18.8 12h2.6M5.4 5.4l1.9 1.9M16.7 16.7l1.9 1.9M18.6 5.4l-1.9 1.9M7.3 16.7l-1.9 1.9"/></svg>
+    </button>
+    <a class="iconbtn" href="https://github.com/mayman150" target="_blank" rel="noopener" aria-label="GitHub profile" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.23 19.88c.51.1.7-.22.7-.49v-1.9c-2.84.62-3.44-1.25-3.44-1.25-.47-1.18-1.14-1.5-1.14-1.5-.93-.63.07-.62.07-.62 1.03.07 1.57 1.06 1.57 1.06.91 1.56 2.4 1.11 2.98.85.09-.66.36-1.11.65-1.37-2.27-.26-4.65-1.13-4.65-5.04 0-1.11.4-2.02 1.05-2.73-.11-.26-.46-1.3.1-2.71 0 0 .85-.27 2.79 1.04a9.6 9.6 0 0 1 5.08 0c1.94-1.31 2.79-1.04 2.79-1.04.56 1.41.21 2.45.1 2.71.65.71 1.05 1.62 1.05 2.73 0 3.92-2.39 4.78-4.67 5.03.37.32.7.94.7 1.9v2.81c0 .27.19.6.71.49A10.2 10.2 0 0 0 12 1.8Z" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ░░ hero ░░ -->
+  <section class="hero">
+    <div class="hero__grid">
+
+      <div class="hero__lead">
+        <p class="eyebrow stagger" style="--d:0ms">
+          <span class="pulse" aria-hidden="true"></span>
+          Reinforcement&nbsp;Learning Research
+          <span class="eyebrow__sep">/</span>
+          Amazon
+          <span class="eyebrow__sep">/</span>
+          Canada
+        </p>
+
+        <h1 class="display">
+          <span class="display__line stagger" style="--d:90ms">Mohamed</span>
+          <span class="display__line display__line--indent stagger" style="--d:180ms">Ayman <em>Mohamed</em></span>
+        </h1>
+
+        <p class="hero__blurb stagger" style="--d:300ms">
+          I work on <strong>credit assignment</strong> — the question of which
+          decision in a long trajectory actually deserves the reward. Lately that
+          means where to cut a reasoning trace, how to set a step size when the
+          world is drifting underneath you, and how agents can cooperate without
+          ever seeing each other's rewards.
+        </p>
+
+        <div class="hero__cta stagger" style="--d:390ms">
+          <a class="btn btn--solid" href="#research">
+            Read the research
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/mayman150" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="hero__meta stagger" style="--d:480ms" aria-label="At a glance">
+        <figure class="portrait">
+          <img src="https://avatars.githubusercontent.com/u/57917939?v=4"
+               alt="Portrait of Mohamed Ayman Mohamed" width="320" height="400" loading="eager" />
+          <figcaption class="mono">@mayman150</figcaption>
+        </figure>
+
+        <dl class="facts">
+          <div class="facts__row">
+            <dt>Focus</dt>
+            <dd>RL &amp; credit assignment</dd>
+          </div>
+          <div class="facts__row">
+            <dt>Active threads</dt>
+            <dd><span class="num" data-count="4">4</span></dd>
+          </div>
+          <div class="facts__row">
+            <dt>Public repositories</dt>
+            <dd><span class="num" data-count="35">35</span></dd>
+          </div>
+          <div class="facts__row">
+            <dt>Building since</dt>
+            <dd>2019</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+
+    <a class="scrollcue" href="#about" aria-label="Scroll to about">
+      <span class="scrollcue__line" aria-hidden="true"></span>
+      <span class="mono">scroll</span>
+    </a>
+  </section>
+
+  <!-- ░░ marquee ░░ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Reinforcement Learning</span><i>◆</i>
+      <span>Credit Assignment</span><i>◆</i>
+      <span>RLVR</span><i>◆</i>
+      <span>Distribution Shift</span><i>◆</i>
+      <span>Multi-Agent Systems</span><i>◆</i>
+      <span>Policy Gradients</span><i>◆</i>
+      <span>Continual Learning</span><i>◆</i>
+      <span>Variance Reduction</span><i>◆</i>
+      <span>Social Dilemmas</span><i>◆</i>
+      <span>Robust Control</span><i>◆</i>
+      <span>Reinforcement Learning</span><i>◆</i>
+      <span>Credit Assignment</span><i>◆</i>
+      <span>RLVR</span><i>◆</i>
+      <span>Distribution Shift</span><i>◆</i>
+      <span>Multi-Agent Systems</span><i>◆</i>
+      <span>Policy Gradients</span><i>◆</i>
+      <span>Continual Learning</span><i>◆</i>
+      <span>Variance Reduction</span><i>◆</i>
+      <span>Social Dilemmas</span><i>◆</i>
+      <span>Robust Control</span><i>◆</i>
+    </div>
+  </div>
+
+  <!-- ░░ about ░░ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sechead reveal">
+        <span class="sechead__idx mono">01</span>
+        <h2 class="sechead__title">About</h2>
+        <span class="sechead__rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="about">
+        <div class="about__body reveal">
+          <p class="lede">
+            I am a reinforcement learning researcher at Amazon, based in Canada.
+            My work sits at the seam between learning theory and systems that have
+            to keep working after the distribution moves.
+          </p>
+          <p>
+            The through-line across everything below is the same stubborn problem.
+            A long trajectory produces one noisy outcome, and something has to
+            decide which of the thousand intermediate decisions earned it. In
+            language-model reasoning that shows up as segment-level credit
+            assignment. In continual learning it shows up as a step size that has
+            to tell drift apart from gradient noise. In multi-agent settings it
+            shows up as an agent trying to value a peer's behaviour without ever
+            observing that peer's reward.
+          </p>
+          <p>
+            Before this I spent a long time close to the metal — pipelined RISC-V
+            in Verilog, an x86-64 bootloader that walks itself into long mode,
+            a distributed system in Rust with its own election protocol. That
+            background still shapes how I do research: I would rather measure the
+            quantity everyone assumes than assume it.
+          </p>
+
+          <div class="about__note">
+            <span class="mono about__noteTag">Currently</span>
+            <p>
+              Running variance measurements on reasoning traces, and proving
+              transient bounds for a shift-aware step-size rule. Open to
+              conversations about either.
+            </p>
+          </div>
+        </div>
+
+        <div class="about__side">
+          <div class="panel reveal" style="--d:80ms">
+            <h3 class="panel__title mono">Research interests</h3>
+            <ul class="taglist">
+              <li>Credit assignment</li>
+              <li>RL from verifiable rewards</li>
+              <li>Non-stationary optimisation</li>
+              <li>Multi-agent cooperation</li>
+              <li>Variance estimation</li>
+              <li>Options &amp; semi-MDPs</li>
+              <li>Robust control</li>
+            </ul>
+          </div>
+
+          <div class="panel reveal" style="--d:160ms">
+            <h3 class="panel__title mono">Toolkit</h3>
+            <ul class="taglist taglist--mono">
+              <li>Python</li><li>PyTorch</li><li>C++</li><li>Rust</li>
+              <li>MATLAB</li><li>Verilog</li><li>x86-64 asm</li><li>CUDA</li>
+              <li>Kubernetes</li><li>LaTeX</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ research ░░ -->
+  <section class="section section--alt" id="research">
+    <div class="wrap">
+      <div class="sechead reveal">
+        <span class="sechead__idx mono">02</span>
+        <h2 class="sechead__title">Research</h2>
+        <span class="sechead__rule" aria-hidden="true"></span>
+      </div>
+
+      <p class="section__intro reveal">
+        Four active threads. Each one is a bet that a question everybody skips
+        is the one that matters.
+      </p>
+
+      <ol class="threads" id="threads"></ol>
+    </div>
+  </section>
+
+  <!-- ░░ writing ░░ -->
+  <section class="section" id="writing">
+    <div class="wrap">
+      <div class="sechead reveal">
+        <span class="sechead__idx mono">03</span>
+        <h2 class="sechead__title">Writing</h2>
+        <span class="sechead__rule" aria-hidden="true"></span>
+      </div>
+
+      <ul class="papers" id="papers"></ul>
+
+      <p class="papers__foot mono reveal">
+        Preprints and code are released once each project clears review.
+      </p>
+    </div>
+  </section>
+
+  <!-- ░░ projects ░░ -->
+  <section class="section section--alt" id="work">
+    <div class="wrap">
+      <div class="sechead reveal">
+        <span class="sechead__idx mono">04</span>
+        <h2 class="sechead__title">Projects</h2>
+        <span class="sechead__rule" aria-hidden="true"></span>
+      </div>
+
+      <p class="section__intro reveal">
+        A selection from <a href="https://github.com/mayman150" target="_blank" rel="noopener">35 public repositories</a> —
+        learning systems, distributed systems, and things that run before the
+        operating system does.
+      </p>
+
+      <div class="filters reveal" id="filters" role="group" aria-label="Filter projects by area"></div>
+
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <!-- ░░ contact ░░ -->
+  <section class="section section--contact" id="contact">
+    <div class="wrap">
+      <div class="sechead reveal">
+        <span class="sechead__idx mono">05</span>
+        <h2 class="sechead__title">Contact</h2>
+        <span class="sechead__rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="contact">
+        <h3 class="contact__pitch reveal">
+          If you are working on <em>credit assignment</em>, non-stationary
+          optimisation, or cooperative agents — I would like to hear about it.
+        </h3>
+
+        <div class="contact__links reveal" style="--d:80ms">
+          <a class="link" href="https://github.com/mayman150" target="_blank" rel="noopener">
+            <span class="mono link__tag">github</span>
+            <span class="link__val">@mayman150</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="link" href="mailto:REPLACE@EXAMPLE.COM" data-placeholder="email">
+            <span class="mono link__tag">email</span>
+            <span class="link__val">add your address</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="link" href="#" data-placeholder="scholar">
+            <span class="mono link__tag">scholar</span>
+            <span class="link__val">add your profile</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="link" href="#" data-placeholder="linkedin">
+            <span class="mono link__tag">linkedin</span>
+            <span class="link__val">add your profile</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <span class="mono">Mohamed Ayman Mohamed — Canada</span>
+    <span class="mono foot__dim">Built by hand. No framework, no tracker.</span>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
