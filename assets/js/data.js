@@ -116,7 +116,6 @@ const EXPERIENCE = [
   {
     role: "Software Engineer",
     org: "Amazon Web Services",
-    place: "Vancouver, Canada",
     period: "Sep 2025 — Present",
     kind: "Industry",
     now: true,
@@ -129,7 +128,6 @@ const EXPERIENCE = [
   {
     role: "Graduate Research Assistant, Reinforcement Learning",
     org: "University of Alberta — Machado Lab",
-    place: "Edmonton, Canada",
     period: "Apr 2024 — Aug 2025",
     kind: "Research",
     points: [
@@ -143,7 +141,6 @@ const EXPERIENCE = [
   {
     role: "Software Engineer (Contract)",
     org: "University of Alberta",
-    place: "Edmonton, Canada",
     period: "Oct 2024 — Apr 2025",
     kind: "Industry",
     points: [
@@ -155,7 +152,6 @@ const EXPERIENCE = [
   {
     role: "Machine Learning Research Intern",
     org: "KAUST",
-    place: "Remote, Saudi Arabia",
     period: "Feb 2023 — Oct 2023",
     kind: "Research",
     points: [
@@ -166,7 +162,6 @@ const EXPERIENCE = [
   {
     role: "Undergraduate Research Assistant",
     org: "American University in Cairo",
-    place: "Cairo, Egypt",
     period: "Sep 2022 — Apr 2023",
     kind: "Research",
     points: [
@@ -177,7 +172,6 @@ const EXPERIENCE = [
   {
     role: "Applied Scientist Intern",
     org: "Microsoft — Zcode",
-    place: "Cairo, Egypt",
     period: "Jul 2022 — Sep 2022",
     kind: "Research",
     points: [
@@ -188,7 +182,6 @@ const EXPERIENCE = [
   {
     role: "Software Engineer",
     org: "Suitera",
-    place: "Cairo, Egypt",
     period: "Sep 2021 — Apr 2022",
     kind: "Industry",
     points: [
@@ -200,7 +193,6 @@ const EXPERIENCE = [
   {
     role: "Full-Stack Software Engineering Intern",
     org: "Envelope.network",
-    place: "Remote, USA",
     period: "Jun 2021 — Aug 2021",
     kind: "Industry",
     points: [

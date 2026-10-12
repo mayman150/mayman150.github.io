@@ -1,5 +1,5 @@
 /* ============================================================
-   Mohamed Ayman Mohamed — portfolio behaviour
+   Mohamed Ayman Mohamed — site behaviour
    No dependencies. Degrades cleanly if anything is unavailable.
    ============================================================ */
 (function () {
@@ -11,6 +11,10 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  const ARROW_SM = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
+  const ARROW    = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
+  const STAR     = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4 2.3 5 5.2.6-3.9 3.6 1.1 5.2L12 15.8l-4.7 2.6 1.1-5.2L4.5 9.6 9.7 9Z"/></svg>`;
+
   /* ---------------------------------------------------------
      1. Theme
      --------------------------------------------------------- */
@@ -21,8 +25,7 @@
     root.dataset.theme = name;
     if (remember) { try { localStorage.setItem(STORE, name); } catch (_) {} }
     document.querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", name === "light" ? "#f5f1e9" : "#080a0b");
-    window.dispatchEvent(new Event("themechange"));
+      ?.setAttribute("content", name === "light" ? "#f6f2ea" : "#0a0c0d");
   }
 
   (function initTheme() {
@@ -32,8 +35,8 @@
     let saved = null;
     try { saved = localStorage.getItem(STORE); } catch (_) {}
     if (saved === "dark" || saved === "light") return setTheme(saved, false);
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    setTheme(prefersLight ? "light" : "dark", false);
+
+    setTheme(window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark", false);
   })();
 
   $("#themeToggle")?.addEventListener("click", () => {
@@ -41,24 +44,22 @@
   });
 
   /* ---------------------------------------------------------
-     2. Render: research threads
+     2. Research strands
      --------------------------------------------------------- */
   const BADGE = {
     primary:   { label: "Core",     cls: "badge--live" },
     secondary: { label: "Adjacent", cls: "" }
   };
 
-  const ARROW_SM = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
-
   const threadsEl = $("#threads");
   if (threadsEl && typeof THREADS !== "undefined") {
     threadsEl.innerHTML = THREADS.map((t, i) => {
-      const b = BADGE[t.status] || BADGE.primary;
       const links = (t.links || []).map((l) =>
         `<a class="pill" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${ARROW_SM}</a>`
       ).join("");
+      const b = BADGE[t.status] || BADGE.primary;
       return `
-      <li class="thread reveal" style="--d:${i * 70}ms">
+      <li class="thread reveal">
         <span class="thread__idx" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
         <div class="thread__main">
           <div class="thread__kicker">
@@ -78,16 +79,16 @@
   }
 
   /* ---------------------------------------------------------
-     3. Render: writing
+     3. Papers
      --------------------------------------------------------- */
   const papersEl = $("#papersList");
   if (papersEl && typeof PAPERS !== "undefined") {
-    papersEl.innerHTML = PAPERS.map((p, i) => {
+    papersEl.innerHTML = PAPERS.map((p) => {
       const title = p.url
         ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)} ${ARROW_SM}</a>`
         : esc(p.title);
       return `
-      <li class="paper reveal" style="--d:${i * 60}ms">
+      <li class="paper reveal">
         <div class="paper__meta">
           <span class="paper__year">${esc(p.year)}</span>
           <span class="paper__kind mono">${esc(p.kind)}</span>
@@ -104,7 +105,7 @@
   }
 
   /* ---------------------------------------------------------
-     3b. Render: skills, experience timeline, education
+     4. Skills, experience, education, teaching
      --------------------------------------------------------- */
   const skillsEl = $("#skills");
   if (skillsEl && typeof SKILLS !== "undefined") {
@@ -119,15 +120,15 @@
 
   const timelineEl = $("#timeline");
   if (timelineEl && typeof EXPERIENCE !== "undefined") {
-    timelineEl.innerHTML = EXPERIENCE.map((e, i) => `
-      <li class="job reveal${e.now ? " job--now" : ""}" style="--d:${i * 55}ms">
+    timelineEl.innerHTML = EXPERIENCE.map((e) => `
+      <li class="job reveal${e.now ? " job--now" : ""}">
         <div class="job__when">
           <span class="mono job__period">${esc(e.period)}</span>
           <span class="mono job__kind">${esc(e.kind)}</span>
         </div>
         <div class="job__what">
           <h3 class="job__role">${esc(e.role)}</h3>
-          <p class="job__org">${esc(e.org)} <span class="job__place">· ${esc(e.place)}</span></p>
+          <p class="job__org">${esc(e.org)}</p>
           <ul class="job__points">
             ${e.points.map((p) => `<li>${esc(p)}</li>`).join("")}
           </ul>
@@ -137,8 +138,8 @@
 
   const eduEl = $("#education");
   if (eduEl && typeof EDUCATION !== "undefined") {
-    eduEl.innerHTML = EDUCATION.map((e, i) => `
-      <li class="degree reveal" style="--d:${i * 60}ms">
+    eduEl.innerHTML = EDUCATION.map((e) => `
+      <li class="degree reveal">
         <span class="mono degree__period">${esc(e.period)}</span>
         <div>
           <h4 class="degree__name">${esc(e.degree)}</h4>
@@ -150,8 +151,8 @@
 
   const teachEl = $("#teaching");
   if (teachEl && typeof TEACHING !== "undefined") {
-    teachEl.innerHTML = TEACHING.map((t, i) => `
-      <li class="teach reveal" style="--d:${i * 60}ms">
+    teachEl.innerHTML = TEACHING.map((t) => `
+      <li class="teach reveal">
         <div>
           <h4 class="teach__role">${esc(t.role)}</h4>
           <p class="teach__org">${esc(t.org)}</p>
@@ -163,25 +164,21 @@
   }
 
   /* ---------------------------------------------------------
-     4. Render: projects + filters
+     5. Projects + filters
      --------------------------------------------------------- */
   const cardsEl = $("#cards");
   const filtersEl = $("#filters");
 
-  const STAR = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4 2.3 5 5.2.6-3.9 3.6 1.1 5.2L12 15.8l-4.7 2.6 1.1-5.2L4.5 9.6 9.7 9Z"/></svg>`;
-  const ARROW = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>`;
-
   if (cardsEl && typeof PROJECTS !== "undefined") {
-    cardsEl.innerHTML = PROJECTS.map((p, i) => {
+    cardsEl.innerHTML = PROJECTS.map((p) => {
       const owner = p.owner || "mayman150";
       return `
       <a class="card reveal" data-area="${esc(p.area)}" data-repo="${esc(owner)}/${esc(p.repo)}"
-         style="--d:${(i % 6) * 55}ms"
          href="https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(p.repo)}"
          target="_blank" rel="noopener">
         <div class="card__top">
           <span class="card__lang"><span class="dot" aria-hidden="true"></span>${esc(p.lang)}</span>
-          <span class="card__stars" data-stars ${p.stars ? "" : 'hidden'}>${STAR}<span>${p.stars}</span></span>
+          <span class="card__stars" data-stars ${p.stars ? "" : "hidden"}>${STAR}<span>${p.stars}</span></span>
         </div>
         <h3 class="card__title">${esc(p.name)}</h3>
         <p class="card__desc">${esc(p.desc)}</p>
@@ -191,17 +188,6 @@
         </div>
       </a>`;
     }).join("");
-
-    // pointer-tracked glow
-    if (!reduced) {
-      cardsEl.addEventListener("pointermove", (e) => {
-        const card = e.target.closest(".card");
-        if (!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--cx", `${e.clientX - r.left}px`);
-        card.style.setProperty("--cy", `${e.clientY - r.top}px`);
-      });
-    }
   }
 
   if (filtersEl && typeof PROJECTS !== "undefined") {
@@ -226,20 +212,14 @@
         c.setAttribute("aria-pressed", String(on));
       });
 
-      $$(".card", cardsEl).forEach((card, i) => {
-        const show = want === "all" || card.dataset.area === want;
-        card.classList.toggle("is-hidden", !show);
-        if (show && !reduced) {
-          card.style.animation = "none";
-          void card.offsetWidth;
-          card.style.animation = `rise .55s var(--ease) ${Math.min(i, 8) * 35}ms both`;
-        }
+      $$(".card", cardsEl).forEach((card) => {
+        card.classList.toggle("is-hidden", !(want === "all" || card.dataset.area === want));
       });
     });
   }
 
   /* ---------------------------------------------------------
-     5. Scroll reveals
+     6. Scroll reveals (a short fade, nothing more)
      --------------------------------------------------------- */
   const revealables = $$(".reveal");
   if (reduced || !("IntersectionObserver" in window)) {
@@ -251,41 +231,14 @@
         en.target.classList.add("is-in");
         io.unobserve(en.target);
       });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
     revealables.forEach((el) => io.observe(el));
   }
 
   /* ---------------------------------------------------------
-     6. Counters
-     --------------------------------------------------------- */
-  $$("[data-count]").forEach((el) => {
-    const target = parseInt(el.dataset.count, 10);
-    if (!Number.isFinite(target) || reduced) return;
-    let started = false;
-    const run = () => {
-      if (started) return; started = true;
-      const dur = 1100, t0 = performance.now();
-      const tick = (now) => {
-        const k = Math.min(1, (now - t0) / dur);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(tick);
-      };
-      el.textContent = "0";
-      requestAnimationFrame(tick);
-    };
-    if ("IntersectionObserver" in window) {
-      const o = new IntersectionObserver((es) => {
-        if (es[0].isIntersecting) { run(); o.disconnect(); }
-      }, { threshold: 0.5 });
-      o.observe(el);
-    } else run();
-  });
-
-  /* ---------------------------------------------------------
-     7. Nav state, scroll progress, active section
+     7. Nav: condensed on scroll, active section
      --------------------------------------------------------- */
   const nav = $("#nav");
-  const bar = $("#scrollProgress");
   const navLinks = $$("[data-nav]");
   const sections = navLinks
     .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
@@ -293,17 +246,11 @@
 
   let queued = false;
   function onScroll() {
-    const y = window.scrollY;
-    nav?.classList.toggle("is-stuck", y > 40);
-
-    if (bar) {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = `${max > 0 ? Math.min(100, (y / max) * 100) : 0}%`;
-    }
+    nav?.classList.toggle("is-stuck", window.scrollY > 24);
 
     let current = -1;
     sections.forEach((s, i) => {
-      if (s.getBoundingClientRect().top <= window.innerHeight * 0.38) current = i;
+      if (s.getBoundingClientRect().top <= window.innerHeight * 0.35) current = i;
     });
     navLinks.forEach((a, i) => a.classList.toggle("is-active", i === current));
 
@@ -315,151 +262,14 @@
   onScroll();
 
   /* ---------------------------------------------------------
-     8. Cursor spotlight
+     8. Footer year
      --------------------------------------------------------- */
-  const spot = $("#spotlight");
-  if (spot && !reduced && window.matchMedia("(pointer: fine)").matches) {
-    let sx = 0, sy = 0, pending = false;
-    window.addEventListener("pointermove", (e) => {
-      sx = e.clientX; sy = e.clientY;
-      if (pending) return;
-      pending = true;
-      requestAnimationFrame(() => {
-        spot.style.setProperty("--mx", `${sx}px`);
-        spot.style.setProperty("--my", `${sy}px`);
-        pending = false;
-      });
-    }, { passive: true });
-  } else if (spot) {
-    spot.style.display = "none";
-  }
+  const yearEl = $("#year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   /* ---------------------------------------------------------
-     9. Policy field — particles advected by a flow field.
-        A visual nod to trajectories in a vector field.
-     --------------------------------------------------------- */
-  (function fieldViz() {
-    const cv = $("#field");
-    if (!cv || reduced) { cv && (cv.style.display = "none"); return; }
-
-    const ctx = cv.getContext("2d", { alpha: true });
-    if (!ctx) return;
-
-    let w = 0, h = 0, dpr = 1, parts = [], ink = "217, 162, 83", alpha = 0.34;
-
-    function readInk() {
-      const cs = getComputedStyle(root);
-      ink = (cs.getPropertyValue("--field-ink") || "217,162,83").trim();
-      alpha = parseFloat(cs.getPropertyValue("--field-alpha")) || 0.34;
-    }
-
-    function spawn() {
-      return {
-        x: Math.random() * w,
-        y: Math.random() * h,
-        life: 60 + Math.random() * 220,
-        age: 0,
-        speed: 0.35 + Math.random() * 0.95,
-        weight: Math.random() < 0.18 ? 1.4 : 0.6
-      };
-    }
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = window.innerWidth;
-      h = window.innerHeight;
-      cv.width = Math.round(w * dpr);
-      cv.height = Math.round(h * dpr);
-      cv.style.width = w + "px";
-      cv.style.height = h + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
-
-      const n = Math.round(Math.min(150, Math.max(40, (w * h) / 11000)));
-      parts = Array.from({ length: n }, spawn);
-    }
-
-    // smooth pseudo-noise: sum of sines. Cheap, no dependency, looks organic.
-    function angleAt(x, y, t) {
-      return Math.PI * (
-        Math.sin(x * 0.0021 + t * 0.9) +
-        Math.cos(y * 0.0024 - t * 0.7) +
-        Math.sin((x + y) * 0.0013 + t * 0.45) * 0.8
-      );
-    }
-
-    let t = 0, raf = 0, running = false;
-
-    function frame() {
-      if (!running) return;
-      t += 0.0016;
-
-      // fade existing trails without painting over the page background
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0,0,0,0.016)";
-      ctx.fillRect(0, 0, w, h);
-      ctx.globalCompositeOperation = "source-over";
-
-      for (let i = 0; i < parts.length; i++) {
-        const p = parts[i];
-        const a = angleAt(p.x, p.y, t);
-        const nx = p.x + Math.cos(a) * p.speed * 1.6;
-        const ny = p.y + Math.sin(a) * p.speed * 1.6;
-
-        ctx.strokeStyle = `rgba(${ink}, ${alpha * (p.weight > 1 ? 0.95 : 0.4)})`;
-        ctx.lineWidth = p.weight;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(nx, ny);
-        ctx.stroke();
-
-        p.x = nx; p.y = ny; p.age++;
-
-        if (p.age > p.life || p.x < -40 || p.x > w + 40 || p.y < -40 || p.y > h + 40) {
-          parts[i] = spawn();
-        }
-      }
-      raf = requestAnimationFrame(frame);
-    }
-
-    function start() { if (!running) { running = true; raf = requestAnimationFrame(frame); } }
-    function stop()  { running = false; cancelAnimationFrame(raf); }
-
-    readInk();
-    resize();
-    start();
-
-    let rt;
-    window.addEventListener("resize", () => {
-      clearTimeout(rt);
-      rt = setTimeout(() => { resize(); readInk(); }, 180);
-    });
-
-    window.addEventListener("themechange", () => {
-      readInk();
-      ctx.clearRect(0, 0, w, h);
-    });
-
-    document.addEventListener("visibilitychange", () => {
-      document.hidden ? stop() : start();
-    });
-
-    // Stop drawing once the field is scrolled out of its masked region.
-    let sq = false;
-    window.addEventListener("scroll", () => {
-      if (sq) return;
-      sq = true;
-      requestAnimationFrame(() => {
-        const past = window.scrollY > window.innerHeight * 1.25;
-        past ? stop() : (!document.hidden && start());
-        sq = false;
-      });
-    }, { passive: true });
-  })();
-
-  /* ---------------------------------------------------------
-     10. Optional: refresh star counts from the GitHub API.
-         Silent no-op on rate limit or offline.
+     9. Optional: refresh star counts from the GitHub API.
+        Silent no-op on rate limit or offline.
      --------------------------------------------------------- */
   (function liveStars() {
     if (!cardsEl) return;

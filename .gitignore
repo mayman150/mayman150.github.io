@@ -1,2 +1,6 @@
 .DS_Store
 *.log
+assets/cv/*.aux
+assets/cv/*.out
+assets/cv/*.pdf.bak
+__*.html
