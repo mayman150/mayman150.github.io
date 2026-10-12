@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mohamed Ayman Mohamed | Continual Reinforcement Learning</title>
+<title>Mohamed Ayman Mohamed | Continual Learning and Reinforcement Learning</title>
 
-<meta name="description" content="Mohamed Ayman Mohamed is a research scientist and software engineer working on continual reinforcement learning. MSc, University of Alberta (Machado Lab). Published at RLC, ICLR, and TPAMI." />
+<meta name="description" content="Mohamed Ayman Mohamed is a research scientist and software engineer working on continual learning and reinforcement learning, and on what neuroscience and cognitive science can tell us about both. MSc, University of Alberta (Machado Lab). Published at RLC, ICLR, and TPAMI." />
 <meta name="author" content="Mohamed Ayman Mohamed" />
 <meta name="theme-color" content="#0e1116" />
 <link rel="canonical" href="https://mayman150.github.io/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Mohamed Ayman Mohamed | Continual Reinforcement Learning" />
-<meta property="og:description" content="Agents that have to keep learning after the world stops holding still." />
+<meta property="og:title" content="Mohamed Ayman Mohamed | Continual Learning and Reinforcement Learning" />
+<meta property="og:description" content="Agents that keep learning after the world stops holding still, and what brains can teach us about building them." />
 <meta property="og:url" content="https://mayman150.github.io/" />
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/57917939?v=4" />
 <meta property="og:image:alt" content="Mohamed Ayman Mohamed" />
@@ -69,7 +69,7 @@
   <section class="mast">
     <div class="wrap mast__grid">
       <div class="mast__lead">
-        <p class="eyebrow">Continual Reinforcement Learning</p>
+        <p class="eyebrow">Continual Learning &middot; Reinforcement Learning</p>
 
         <h1 class="mast__name">Mohamed Ayman <em>Mohamed</em></h1>
 
@@ -80,11 +80,12 @@
         </p>
 
         <p class="mast__blurb">
-          I work on <strong>continual reinforcement learning</strong>: agents
-          that have to keep learning after the world stops holding still. Most
-          benchmarks quietly assume the problem stops changing. I build the
-          environments and measurements that remove that assumption, then find
-          out which algorithms actually survive it.
+          I work on <strong>continual learning</strong> and
+          <strong>reinforcement learning</strong>: agents that have to keep
+          learning after the world stops holding still. I am drawn to where
+          that meets neuroscience and cognitive science, because the problem an
+          animal solves to survive a changing world is close to the one we keep
+          asking our agents to solve.
         </p>
 
         <div class="mast__cta">
@@ -104,7 +105,7 @@
         </figure>
 
         <dl class="facts">
-          <div class="facts__row"><dt>Focus</dt><dd>Continual RL</dd></div>
+          <div class="facts__row"><dt>Focus</dt><dd>Continual learning, RL</dd></div>
           <div class="facts__row"><dt>Papers</dt><dd>4</dd></div>
           <div class="facts__row"><dt>Citations</dt><dd><a href="https://scholar.google.com/citations?user=5OnlOKMAAAAJ" target="_blank" rel="noopener">63</a></dd></div>
           <div class="facts__row"><dt>h-index</dt><dd><a href="https://scholar.google.com/citations?user=5OnlOKMAAAAJ" target="_blank" rel="noopener">3</a></dd></div>
@@ -125,8 +126,9 @@
       <div class="about">
         <div class="about__body reveal">
           <p class="lede">
-            I work on continual reinforcement learning, the setting where an
-            agent never gets a final task, only a world that keeps moving.
+            I work on continual learning and reinforcement learning: the
+            setting where an agent never gets a final task, only a world that
+            keeps moving.
           </p>
           <p>
             I did my MSc at the University of Alberta with
@@ -139,10 +141,28 @@
             largely do not.
           </p>
           <p>
-            Alongside that I work on multi-agent cooperation, asking how agents
-            can value each other's behaviour without ever seeing each other's
-            rewards. Earlier, at KAUST, I worked on grounding language in 3D
-            scenes, which is where the ICLR and TPAMI papers below come from.
+            The thread I find most interesting runs the other way: what the
+            study of brains and behaviour can tell us about how to build
+            agents. Psychology splits empathy into two parts, estimating how
+            someone else is doing and caring about it. Multi-agent RL has
+            borrowed the second part heavily, under the name social
+            preferences, and quietly skipped the first by handing each agent
+            its neighbours' reward signals. People never get that. We work out
+            how things are going for someone by watching what they do and
+            imagining ourselves in their position.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2610.07881" target="_blank" rel="noopener">Self-referenced
+            social preferences</a> gives agents that same move: each one learns
+            a model of its own reward and applies it to the transitions it
+            observes from others, asking what it would have earned in their
+            place. That turns out to be enough to sustain cooperation in
+            sequential social dilemmas, and it often divides the joint return
+            more equitably than agents that can read the true rewards.
+          </p>
+          <p>
+            Earlier, at KAUST, I worked on grounding language in 3D scenes,
+            which is where the ICLR and TPAMI papers below come from.
           </p>
           <p>
             Day to day I am a software engineer at AWS, building AI systems for
@@ -159,7 +179,9 @@
           <div class="panel reveal">
             <h3 class="panel__title mono">Research interests</h3>
             <ul class="taglist">
-              <li>Continual RL</li>
+              <li>Continual learning</li>
+              <li>Reinforcement learning</li>
+              <li>Neuroscience &amp; RL</li>
               <li>Distribution shift</li>
               <li>Plasticity &amp; adaptation</li>
               <li>Representation learning</li>

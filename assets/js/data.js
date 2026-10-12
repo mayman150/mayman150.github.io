@@ -38,13 +38,13 @@ const THREADS = [
     ]
   },
   {
-    area: "Multi-agent RL",
-    status: "secondary",
+    area: "Multi-agent RL · cognitive science",
+    status: "primary",
     title: "Cooperation without observing anyone's reward",
-    sub: "Social preferences grounded in an agent's own model of value, applied to what it sees others do.",
+    sub: "Borrowing the cognitive half of empathy, not just the motivational half.",
     body: [
-      "Social preferences reliably produce cooperation in multi-agent RL, but nearly all of them assume an agent can read its peers' reward signals. People cannot do that. We watch what others <em>do</em> and how it turns out for them, and judge it by our own lights.",
-      "Each agent learns a model of its own reward, applies that model to other agents' observed transitions, and feeds the resulting self-referenced assessments into standard social preferences. Across Escape Room, Clean Up, and Commons Harvest, agents learn to cooperate without reward access, and often divide the joint return <strong>more equitably</strong> than agents that can see the true rewards."
+      "Psychology separates a <strong>cognitive</strong> part of empathy, estimating how another agent is doing, from a <strong>motivational</strong> part, caring about it. Social preferences in multi-agent RL model the motivational part well, then skip the cognitive part entirely by handing each agent its peers' reward signals. That channel exists in simulation and almost nowhere else: a reward is a private signal, and people never receive one.",
+      "So we give agents the move people actually use, simulation. Each agent learns a model of its own reward and applies it to the transitions it observes from others, asking what it would have earned in their place. Those self-referenced assessments feed an unchanged social preference, and each policy still acts only on its own observation. Across Escape Room, Clean Up, and Commons Harvest this sustains cooperation with no access to anyone's reward, and often divides the joint return <strong>more equitably</strong> than agents that can read the true rewards."
     ],
     marker: "r̂ⱼ = R̂ᵢ(sⱼ, aⱼ, s′ⱼ)   ·   peer outcomes, own yardstick",
     links: [
