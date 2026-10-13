@@ -81,11 +81,12 @@
 
         <p class="mast__blurb">
           I work on <strong>continual learning</strong> and
-          <strong>reinforcement learning</strong>: agents that have to keep
-          learning after the world stops holding still. I am drawn to where
-          that meets neuroscience and cognitive science, because the problem an
-          animal solves to survive a changing world is close to the one we keep
-          asking our agents to solve.
+          <strong>reinforcement learning</strong>. Most machine learning assumes
+          you train a model once and then you're done. I work on the harder
+          case, where the task keeps changing and the agent has to carry on
+          learning for as long as it runs. I'm also interested in what
+          neuroscience and psychology can tell us about this, since animals
+          solve it every day.
         </p>
 
         <div class="mast__cta">
@@ -126,52 +127,78 @@
       <div class="about">
         <div class="about__body reveal">
           <p class="lede">
-            I work on continual learning and reinforcement learning: the
-            setting where an agent never gets a final task, only a world that
-            keeps moving.
+            I want to understand how reinforcement learning algorithms actually
+            work, and what it takes to make them work in something closer to
+            the real world.
           </p>
           <p>
-            I did my MSc at the University of Alberta with
-            <a href="https://webdocs.cs.ualberta.ca/~machado/" target="_blank" rel="noopener">Marlos C. Machado</a>.
-            Most of my time there went into a problem that sounds like
-            bookkeeping and turns out not to be: we had no good place to study
-            agents that must keep adapting. Benchmarks hand you a fixed task and
-            ask how well you eventually solve it. So I built one that refuses to
-            hold still, then measured how the standard algorithms cope. They
-            largely do not.
+            Most RL research trains an agent until it converges, freezes the
+            policy, and scores it. The real world doesn't sit still for that.
+            Continual learning takes the other view: the agent should keep
+            learning for as long as it runs. The trouble was that there was
+            nowhere good to study it. The usual trick is to bolt task changes
+            onto an episodic benchmark, which really only captures abrupt
+            switches and still leans on episode boundaries. The purpose-built
+            alternatives were too simple to be interesting.
           </p>
           <p>
-            The thread I find most interesting runs the other way: what the
-            study of brains and behaviour can tell us about how to build
-            agents. Psychology splits empathy into two parts, estimating how
-            someone else is doing and caring about it. Multi-agent RL has
-            borrowed the second part heavily, under the name social
-            preferences, and quietly skipped the first by handing each agent
-            its neighbours' reward signals. People never get that. We work out
-            how things are going for someone by watching what they do and
-            imagining ourselves in their position.
+            So at
+            <a href="https://webdocs.cs.ualberta.ca/~machado/" target="_blank" rel="noopener">Marlos C. Machado's</a>
+            lab at Alberta, for my MSc, I built
+            <a href="https://arxiv.org/abs/2505.18347" target="_blank" rel="noopener">AgarCL</a>,
+            a research platform based on the game Agar.io. It's non-episodic
+            and partially observable, with high-dimensional observations,
+            continuous actions, and dynamics that keep evolving as the agent
+            grows. There's no point where the problem settles down, which is
+            the whole idea.
           </p>
           <p>
-            <a href="https://arxiv.org/abs/2610.07881" target="_blank" rel="noopener">Self-referenced
-            social preferences</a> gives agents that same move: each one learns
-            a model of its own reward and applies it to the transitions it
-            observes from others, asking what it would have earned in their
-            place. That turns out to be enough to sustain cooperation in
-            sequential social dilemmas, and it often divides the joint return
-            more equitably than agents that can read the true rewards.
+            Then we measured. DQN, PPO, and SAC all struggle on it. The result
+            I found more interesting was what happened when we tried the
+            standard continual-learning fixes: Shrink and Perturb, ReDo, and
+            Continual Backpropagation each barely improved on plain RL. Those
+            methods are built to treat loss of plasticity, so if they don't
+            help, the difficulty here isn't only the stability-plasticity
+            trade-off. Something else is going on, and working out what is the
+            part I care about.
           </p>
           <p>
-            Earlier, at KAUST, I worked on grounding language in 3D scenes,
-            which is where the ICLR and TPAMI papers below come from.
+            A realistic environment also contains other agents, and the same
+            kind of convenient assumption turns up there. Psychology splits
+            empathy in two: working out how someone else is doing, and caring
+            about it. Multi-agent RL has borrowed the caring part heavily,
+            calling it social preferences, and skipped the working-out part by
+            simply telling each agent what its neighbours earned. No real agent
+            gets that, because a reward is private. We figure out how someone
+            is doing by watching what they do and picturing ourselves in their
+            place.
           </p>
           <p>
-            Day to day I am a software engineer at AWS, building AI systems for
-            Kubernetes and region infrastructure. Before research I spent a long
-            time close to the metal: pipelined RISC-V in Verilog, an x86-64
-            bootloader that walks itself into long mode, a distributed system in
-            Rust with its own election protocol. That background still shapes
-            how I work: I would rather measure the quantity everyone assumes
-            than assume it.
+            So in
+            <a href="https://arxiv.org/abs/2610.07881" target="_blank" rel="noopener">Self-Referenced
+            Social Preferences</a> we gave agents that same move. Each one
+            learns a model of its own reward, then applies it to what it sees
+            others do, asking what it would have earned in their place. That
+            alone keeps cooperation going in social dilemmas, and it often
+            splits the group's earnings more fairly than agents that can read
+            everyone's real rewards.
+          </p>
+          <p>
+            Both projects come from the same instinct, and it's the thing I'd
+            most like to be known for: find the assumption a field is quietly
+            leaning on because it's convenient, take it away, and see what still
+            works.
+          </p>
+          <p>
+            Before all this, at KAUST, I worked on connecting language to 3D
+            scenes, which is where the ICLR and TPAMI papers below come from.
+            And before research I spent years close to the hardware: a
+            pipelined RISC-V processor in Verilog, an x86-64 bootloader that
+            brings a machine up into 64-bit mode, a distributed system in Rust
+            with its own leader election. Day to day I'm now a software
+            engineer at AWS, building AI tools for Kubernetes and region
+            infrastructure. Those hardware years still shape how I work: when
+            everyone assumes a number, I'd rather go and measure it.
           </p>
         </div>
 
@@ -209,7 +236,7 @@
       </div>
 
       <p class="section__intro reveal">
-        Four strands, all public. The first two are where I spend most of my time.
+        Four strands, all public. The first three are where I spend most of my time.
       </p>
 
       <ol class="threads" id="threads"></ol>
@@ -294,7 +321,7 @@
       <div class="contact">
         <h3 class="contact__pitch reveal">
           If you work on continual learning, non-stationarity, or cooperative
-          agents, I would like to hear about it.
+          agents, I'd like to hear about it.
         </h3>
 
         <div class="contact__links reveal">

@@ -12,12 +12,12 @@ const THREADS = [
     area: "Continual RL · environments",
     status: "primary",
     title: "Benchmarks for agents that never stop learning",
-    sub: "Most RL benchmarks quietly assume the problem holds still. AgarCL removes that assumption.",
+    sub: "Episodic benchmarks with task switches bolted on only capture abrupt change. AgarCL needs no episodes at all.",
     body: [
-      "Almost every standard RL benchmark hands the agent a fixed task and measures how well it eventually solves it. Continual RL asks a harder question: what happens when there is no <em>eventually</em>, because the distribution keeps moving and the agent has to keep adapting for as long as it runs.",
-      "I built <strong>AgarCL</strong>, a C++/Python environment based on Agar.io that models both gradual and abrupt distribution shift, in episodic and non-episodic settings. It is deliberately awkward for conventional methods: the observation space is high-dimensional, the agent's own growth changes the dynamics, and there is no natural episode boundary to reset behind."
+      "Continual RL expects an agent to keep learning rather than converge to a policy you freeze and then score. Studying that needs the right environment, and the options were poor. Modifying an episodic benchmark to inject task shifts mostly captures abrupt switches and still leans on episode boundaries, while the few purpose-built continual simulators were limited in scope or complexity.",
+      "<strong>AgarCL</strong> is a research platform built on the game Agar.io: non-episodic, high-dimensional, and partially observable, with continuous actions and stochastic dynamics that keep evolving as the agent grows. There is no point where the problem settles down, and the agent's own growth changes what it is facing."
     ],
-    marker: "episodic + non-episodic · gradual + abrupt shift",
+    marker: "non-episodic · continuous actions · partial observability",
     links: [
       { label: "Paper (arXiv)", url: "https://arxiv.org/abs/2505.18347" },
       { label: "Code", url: "https://github.com/machado-research/AgarCL" }
@@ -26,14 +26,15 @@ const THREADS = [
   {
     area: "Continual RL · plasticity",
     status: "primary",
-    title: "Which algorithms actually survive non-stationarity",
-    sub: "Benchmarking value-based and policy-gradient methods when the ground keeps moving.",
+    title: "Which algorithms cope, and why the usual fixes don't",
+    sub: "Standard RL struggles on AgarCL. So does the continual-learning toolkit built to rescue it.",
     body: [
-      "Having an environment that shifts is only useful if you then measure honestly against it. I ran a benchmark study across value-based and policy-gradient families under continual conditions, and the headline result is unflattering to all of them: methods that look strong on stationary tasks degrade sharply once adaptation has to continue indefinitely.",
-      "The follow-on question is representational. A convolutional feature-extraction pipeline that learns compact state representations from high-dimensional observations recovered a meaningful share of that gap, converging faster and using fewer samples, which suggests a good deal of the failure is about what the network can still represent after training, not only about the learning rule."
+      "An environment that keeps changing is only useful if you then measure honestly against it. DQN, PPO, and SAC all struggle on AgarCL's main challenge, and a suite of smaller tasks isolates which parts of the game cause which kind of trouble.",
+      "The more telling result came from the continual-learning methods. Shrink and Perturb, ReDo, and Continual Backpropagation are all built to treat loss of plasticity, and none of them improved much on plain RL. That points somewhere uncomfortable: the difficulty here reaches <strong>beyond the stability-plasticity dilemma</strong>, which is where most of the field's attention currently sits."
     ],
-    marker: "DQN / PPO / SAC   ·   stability, convergence, sample efficiency",
+    marker: "DQN / PPO / SAC   vs   Shrink-and-Perturb / ReDo / Continual Backprop",
     links: [
+      { label: "Paper (arXiv)", url: "https://arxiv.org/abs/2505.18347" },
       { label: "Benchmark code", url: "https://github.com/machado-research/AgarCL-benchmark" }
     ]
   },
@@ -41,10 +42,10 @@ const THREADS = [
     area: "Multi-agent RL · cognitive science",
     status: "primary",
     title: "Cooperation without observing anyone's reward",
-    sub: "Borrowing the cognitive half of empathy, not just the motivational half.",
+    sub: "Borrowing the half of empathy that multi-agent RL left out.",
     body: [
-      "Psychology separates a <strong>cognitive</strong> part of empathy, estimating how another agent is doing, from a <strong>motivational</strong> part, caring about it. Social preferences in multi-agent RL model the motivational part well, then skip the cognitive part entirely by handing each agent its peers' reward signals. That channel exists in simulation and almost nowhere else: a reward is a private signal, and people never receive one.",
-      "So we give agents the move people actually use, simulation. Each agent learns a model of its own reward and applies it to the transitions it observes from others, asking what it would have earned in their place. Those self-referenced assessments feed an unchanged social preference, and each policy still acts only on its own observation. Across Escape Room, Clean Up, and Commons Harvest this sustains cooperation with no access to anyone's reward, and often divides the joint return <strong>more equitably</strong> than agents that can read the true rewards."
+      "Psychology splits empathy in two: working out how another agent is doing, and caring about it. Social preferences in multi-agent RL model the caring part well, then skip the working-out part by simply telling each agent what its peers earned. That channel exists in simulation and almost nowhere else, because a reward is private and nobody receives someone else's.",
+      "So we give agents the move people actually use, which is to picture themselves in the other's place. Each agent learns a model of its own reward and applies it to the transitions it sees from others, asking what it would have earned there. Those estimates feed an ordinary social preference, and each policy still acts only on its own observation. Across Escape Room, Clean Up, and Commons Harvest this keeps cooperation going with no access to anyone's reward, and often splits the group's earnings <strong>more fairly</strong> than agents that can read the real ones."
     ],
     marker: "r̂ⱼ = R̂ᵢ(sⱼ, aⱼ, s′ⱼ)   ·   peer outcomes, own yardstick",
     links: [
@@ -57,8 +58,8 @@ const THREADS = [
     title: "Grounding language in 3D scenes",
     sub: "Chain-of-thought supervision for 3D visual grounding, and large-scale compositional 3D data.",
     body: [
-      "Before moving to reinforcement learning I worked on 3D vision and language at KAUST. <strong>CoT3DRef</strong> reformulates 3D visual grounding as a sequence of interpretable steps (locate the anchors, then the target), which makes the task markedly more data-efficient than predicting the referent in one shot.",
-      "Alongside it, <strong>3DCoMPaT++</strong> contributed a large-scale 3D vision dataset for compositional recognition, where the task is to recognise not just objects but their parts and the materials those parts are made of."
+      "Before moving to reinforcement learning I worked on 3D vision and language at KAUST. <strong>CoT3DRef</strong> breaks 3D visual grounding into steps you can inspect, finding the anchor objects first and the target second, which makes it far more data-efficient than predicting the answer in one shot.",
+      "Alongside it, <strong>3DCoMPaT++</strong> contributed a large-scale 3D vision dataset for compositional recognition, where the job is to recognise not just objects but their parts and what those parts are made of."
     ],
     links: [
       { label: "CoT3DRef (ICLR 2024)", url: "https://arxiv.org/abs/2310.06214" },
@@ -89,7 +90,7 @@ const PAPERS = [
     status: "Published",
     scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=5OnlOKMAAAAJ&citation_for_view=5OnlOKMAAAAJ:9yKSN-GCB0IC",
     cites: 3,
-    abs: "A continual RL environment built on Agar.io, modelling gradual and abrupt distribution shift across episodic and non-episodic settings, with a benchmark of standard value-based and policy-gradient methods.",
+    abs: "A continual RL research platform built on Agar.io: non-episodic, high-dimensional, partially observable, with continuous actions and dynamics that keep evolving. Benchmarks DQN, PPO, and SAC, plus three continual-learning methods that barely improve on them, which suggests the challenge reaches beyond the stability-plasticity dilemma.",
     url: "https://arxiv.org/abs/2505.18347"
   },
   {

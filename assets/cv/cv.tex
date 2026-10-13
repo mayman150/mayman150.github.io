@@ -106,8 +106,8 @@
 
 \begin{pts}
   \item \textbf{Published} at \textbf{RLC}, \textbf{ICLR}, and \textbf{TPAMI}, with a fourth paper under review. \textbf{63} citations, h-index \textbf{3} (\href{https://scholar.google.com/citations?user=5OnlOKMAAAAJ}{Scholar}). MSc in Computing Science (AI), University of Alberta, \textbf{4.0/4.0}, supervised by Marlos C. Machado.
-  \item \textbf{Research that ships:} first author of \href{https://github.com/machado-research/AgarCL}{\textbf{AgarCL}}, a continual RL environment and benchmark released as a maintained C++/Python library, now used to study loss of plasticity.
-  \item \textbf{Cross-disciplinary:} draw on neuroscience and cognitive science to design learning rules, most recently borrowing the cognitive half of empathy so agents can cooperate without observing each other's rewards.
+  \item \textbf{Research that ships:} first author of \href{https://github.com/machado-research/AgarCL}{\textbf{AgarCL}}, a continual RL research platform released as a maintained C++/Python library, on which standard RL algorithms and the usual plasticity fixes both fall short.
+  \item \textbf{Cross-disciplinary:} draw on neuroscience and psychology to design learning rules, most recently using the half of empathy that multi-agent RL had skipped, so agents cooperate without ever seeing each other's rewards.
   \item \textbf{Engineering range:} ship production systems at AWS scale while writing CUDA kernels and profiling C++ with Valgrind, having also built a pipelined RISC-V core and an x86-64 bootloader from scratch.
 \end{pts}
 
@@ -117,7 +117,7 @@
 \role{Graduate Research Assistant, Reinforcement Learning}{University of Alberta, Machado Lab}{Full-time}{Apr 2024 -- Aug 2025}
 \begin{pts}
   \item Built a C++/Python continual RL environment modelling \textbf{gradual} and \textbf{abrupt} distribution shift in episodic and non-episodic settings, across \textbf{15} simulation scenarios.
-  \item Benchmarked \textbf{DQN, PPO}, and \textbf{SAC} on policy stability, convergence speed, and sample efficiency, exposing a \textbf{90\%} failure rate under continual conditions.
+  \item Benchmarked \textbf{DQN, PPO}, and \textbf{SAC}, then showed that \textbf{Shrink and Perturb}, \textbf{ReDo}, and \textbf{Continual Backpropagation} barely improve on them, evidence that the difficulty reaches beyond the stability-plasticity dilemma.
   \item Roughly doubled throughput with CUDA rendering, asynchronous inference, and quad-tree approximation: grid observations from \textbf{1{,}200} to \textbf{2{,}200} steps/second, screen from \textbf{800} to \textbf{1{,}600}.
   \item Built a CNN feature-extraction pipeline learning compact state representations from high-dimensional inputs: \textbf{30\%} faster convergence, \textbf{25\%} better sample efficiency.
   \item Containerised with Docker behind a CI/CD pipeline of \textbf{25+} automated tests; resolved memory leaks with Valgrind and tracked regressions with Google Benchmark.
